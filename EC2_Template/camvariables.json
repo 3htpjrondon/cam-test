@@ -1,0 +1,97 @@
+{
+  "input_datatypes": [ ],
+  "input_namespaces": [ ],
+  "output_namespace": "",
+  "input_groups": [  {
+    "name": "Instancias-aws_instance.EC2-Instance",
+    "label": "Instancias - aws_instance.EC2-Instance"
+  } ],
+  "output_groups": [ ],
+  "template_input_params": [
+    {
+      "name": "ami-id",
+      "label": "ami-id",
+      "description": "ami to use for the EC2 instance",
+      "type": "string",
+      "default": "ami-06fcc1f0bc2c8943f",
+      "regex": "",
+      "group_name": "Instancias-aws_instance.EC2-Instance",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "instance_type",
+      "label": "instance_type",
+      "description": "Generado",
+      "type": "string",
+      "default": "t2.micro",
+      "regex": "",
+      "group_name": "Instancias-aws_instance.EC2-Instance",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "key_name",
+      "label": "key_name",
+      "description": "Key pair name to be used",
+      "type": "string",
+      "default": "CAM-demo-keypair",
+      "regex": "",
+      "group_name": "Instancias-aws_instance.EC2-Instance",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "instance_network",
+      "label": "instance_network",
+      "description": "Assign Public IP address to the instance",
+      "type": "string",
+      "default": "true",
+      "regex": "",
+      "group_name": "Instancias-aws_instance.EC2-Instance",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "root_size",
+      "label": "root_size",
+      "description": "Size in GiB of the root volume",
+      "type": "string",
+      "default": "20",
+      "regex": "",
+      "group_name": "Instancias-aws_instance.EC2-Instance",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "instance_name",
+      "label": "instance_name",
+      "description": "Name of the EC2 instance",
+      "type": "string",
+      "default": "ec2-cam-test",
+      "regex": "",
+      "group_name": "Instancias-aws_instance.EC2-Instance",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    }
+  ],
+  "template_output_params": [ ]
+}

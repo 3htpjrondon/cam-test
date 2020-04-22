@@ -1,0 +1,13 @@
+{
+   "name": "EC2_Template",
+   "description": "Template for the creation of an EC2 instance with option to change the root volume, ami, instance type, key pair and to assign a public ip ",
+   "type": "userCreated",
+   "manifest": {
+     "template_type": "Terraform",
+     "template_format": "HCL",
+     "template_provider": "Amazon EC2"
+   },
+   "metadata": {
+     "bullets": []
+   }
+ }
