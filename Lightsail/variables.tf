@@ -25,7 +25,7 @@ variable "blueprint_id" {
 variable "key_pair_name" {
   type = "string"
   description = "key pair to be used for SSH conecction"
-  default = "CAMOregonPK"
+  default = "CAMOregonKP"
 }
 
 variable "bundle_id" {

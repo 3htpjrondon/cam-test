@@ -62,7 +62,7 @@
       "label": "key_pair_name",
       "description": "key pair to be used for SSH conecction",
       "type": "string",
-      "default": "CAMOregonPK",
+      "default": "CAMOregonKP",
       "regex": "",
       "group_name": "",
       "required": true,
@@ -173,7 +173,7 @@
   "template_output_params": [  {
     "name": "lightsail_public_ip",
     "label": "Lightsail Public Ip",
-    "description": null,
+    "description": "null",
     "group_name": "",
     "secured": false,
     "hidden": false,

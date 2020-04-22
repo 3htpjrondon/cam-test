@@ -1,6 +1,6 @@
 {
    "name": "Lightsail",
-   "description": "Description for Lightsail.",
+   "description": "Template for Lightsail instance creation.",
    "type": "userCreated",
    "manifest": {
      "template_type": "Terraform",
