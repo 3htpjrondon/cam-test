@@ -1,0 +1,22 @@
+{
+  "input_datatypes": [ ],
+  "input_namespaces": [ ],
+  "output_namespace": "",
+  "input_groups": [  { "name": "Otros", "label": "Otros" } ],
+  "output_groups": [ ],
+  "template_input_params": [  {
+    "name": "bucket",
+    "label": "Bucket",
+    "description": "bucket name",
+    "type": "string",
+    "default": "3htp-cam-test-bucket",
+    "regex": "",
+    "group_name": "",
+    "required": true,
+    "secured": false,
+    "hidden": false,
+    "immutable": false,
+    "immutable_after_create": false
+  } ],
+  "template_output_params": [ ]
+}
