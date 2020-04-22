@@ -1,0 +1,183 @@
+{
+  "input_datatypes": [ ],
+  "input_namespaces": [ ],
+  "output_namespace": "",
+  "input_groups": [
+    {
+      "name": "No utilizado",
+      "label": "No utilizado"
+    },
+    { "name": "tags", "label": "tags" },
+    {
+      "name": "route_53",
+      "label": "Route 53"
+    }
+  ],
+  "output_groups": [ ],
+  "template_input_params": [
+    {
+      "name": "name",
+      "label": "name",
+      "description": "name for the lightsail instance",
+      "type": "string",
+      "default": "training",
+      "regex": "",
+      "group_name": "No utilizado",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "availability_zone",
+      "label": "availability_zone",
+      "description": "availability zone to deploy the lightsail instance",
+      "type": "string",
+      "default": "us-west-2a",
+      "regex": "",
+      "group_name": "",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "blueprint_id",
+      "label": "blueprint_id",
+      "description": "blueprint to be used for the instance",
+      "type": "string",
+      "default": "ubuntu_16_04_2",
+      "regex": "",
+      "group_name": "",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "key_pair_name",
+      "label": "key_pair_name",
+      "description": "key pair to be used for SSH conecction",
+      "type": "string",
+      "default": "CAMOregonPK",
+      "regex": "",
+      "group_name": "",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "bundle_id",
+      "label": "bundle_id",
+      "description": "bundle to be used for Lightsail",
+      "type": "string",
+      "default": "nano_2_0",
+      "regex": "",
+      "group_name": "",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "Project",
+      "label": "Project",
+      "description": "tag for porject",
+      "type": "string",
+      "default": "Induccion",
+      "regex": "",
+      "group_name": "tags",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "Customer",
+      "label": "Customer",
+      "description": "tag for customer",
+      "type": "string",
+      "default": "3HTP",
+      "regex": "",
+      "group_name": "tags",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "User",
+      "label": "User",
+      "description": "tag for user",
+      "type": "string",
+      "default": "user",
+      "regex": "",
+      "group_name": "tags",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "Country",
+      "label": "Country",
+      "description": "tag for country",
+      "type": "string",
+      "default": "Colombia",
+      "regex": "",
+      "group_name": "tags",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "zone_id",
+      "label": "zone_id",
+      "description": "hosted zone in route 53 for the DNS record of the lightsail instance",
+      "type": "string",
+      "default": "Z32NM2OZW9ZVMV",
+      "regex": "",
+      "group_name": "route_53",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "record_name",
+      "label": "record_name",
+      "description": "record name for the lightsail instance",
+      "type": "string",
+      "default": "training.born2bcloud.net",
+      "regex": "",
+      "group_name": "route_53",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    }
+  ],
+  "template_output_params": [  {
+    "name": "lightsail_public_ip",
+    "label": "Lightsail Public Ip",
+    "description": null,
+    "group_name": "",
+    "secured": false,
+    "hidden": false,
+    "shortname": "",
+    "type": "string"
+  } ]
+}
