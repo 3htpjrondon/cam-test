@@ -1,0 +1,422 @@
+{
+  "input_groups": [
+    {
+      "name": "cloud",
+      "label": "Cloud Input Variables"
+    },
+    {
+      "name": "ansibleserver",
+      "label": "Ansible Sever Settings"
+    },
+    {
+      "name": "virtualmachine",
+      "label": "Virtual Machine Input Settings"
+    },
+    {
+      "name": "mysql",
+      "label": "MySQL Server Settings"
+    }
+  ],
+  "output_groups": [
+    {
+      "name": "content_template_output",
+      "label": "Outputs"
+    }
+  ],
+  "template_input_params": [
+    {
+      "name": "ansible_hostname",
+      "description": "Ansible Host",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Server Hostname",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "ansibleserver"
+    },
+    {
+      "name": "ansible_username",
+      "description": "Ansible Username",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Server Username",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "ansibleserver"
+    },
+    {
+      "name": "ansible_password",
+      "description": "Ansible Password",
+      "type": "password",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Server Password",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "ansibleserver"
+    },
+    {
+      "name": "ansible_private_key",
+      "description": "Ansible Node Private SSH key Details (base64)",
+      "default": "",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Server Private key (base64)",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "ansibleserver"
+    },
+    {
+      "name": "ansible_public_key_openssh",
+      "description": "Ansible Node Public SSH key Details",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Server Public Key",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "ansibleserver"
+    },
+
+    {
+      "name": "mysql_dbname",
+      "description": "MySQL Database name",
+      "default": "db01",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Server Database Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "mysql"
+    },
+    {
+      "name": "mysql_dbport",
+      "description": "MySQL Port Number",
+      "default": "3309",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Database Port Number",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "mysql"
+    },
+    {
+      "name": "mysql_dbuser",
+      "description": "MySQL Database UserName",
+      "default": "dbuser",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Database Username",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "mysql"
+    },
+    {
+      "name": "mysql_password",
+      "description": "MySQL Password",
+      "type": "password",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Database Password",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "mysql"
+    },
+    {
+      "name": "playbook_location",
+      "description": "PlayBook Location",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Playbook Location on Ansible Server",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "ansibleserver"
+    },
+    {
+      "name": "singlenode_prefix_name",
+      "description": "MySQL Node Hostname Prefix",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node Hostname Prefix",
+      "hidden": false,
+      "immutable": false
+    },
+    {
+      "name": "singlenode_memory",
+      "description": "MySQL Node Node Memory Allocation (mb)",
+      "default": "4096",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node Memory Allocation (mb)",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vcpu",
+      "description": "MySQL Node vCPU Allocation",
+      "default": "2",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node vCPU Allocation",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_disk1_datastore",
+      "description": "Virtual Machine Datastore Name - Disk 1",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node Datastore Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_disk1_keep_on_remove",
+      "description": "MySQL Node Keep Disk on Remove",
+      "default": "true",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node Keep Disk on Remove",
+      "hidden": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_disk1_size",
+      "description": "MySQL Node Disk Size (GB)",
+      "default": "100",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node Disk Size (GB)",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_disk2_datastore",
+      "description": "Virtual Machine Datastore Name - Disk 2",
+      "default": "",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node Datastore Name - Disk 2",
+      "hidden": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_disk2_enable",
+      "description": "MySQL Node Disk 2",
+      "default": "false",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node Keep Disk on Remove - Disk 2",
+      "hidden": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_disk2_keep_on_remove",
+      "description": "MySQL Node Keep Disk 2 on Remove",
+      "default": "",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node Keep Disk on Remove - Disk 2",
+      "hidden": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_disk2_size",
+      "description": "MySQL Node Disk 2 Size (GB)",
+      "default": "",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node Disk Size (GB) - Disk 2",
+      "hidden": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_ipv4_address",
+      "description": "MySQL Node IP Address (list)",
+      "type": "list",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node IP Address",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine",
+      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
+      "regexdesc": "Provide a Valid IP address for the Virtual Machine"
+    },
+    {
+      "name": "singlenode_vm_ipv4_gateway",
+      "description": "MySQL Node IP Gateway Address",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node IP Gateway",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine",
+			"regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
+      "regexdesc": "Provide a Valid IP address for the Virtual Machine Gateway"
+    },
+    {
+      "name": "singlenode_vm_ipv4_prefix_length",
+      "description": "Integer value between 1 and 32 for the prefix length, CIDR, to use when statically assigning an IPv4 address",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node IP Netmask (CIDR)",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine",
+      "regex": "^([8-9]|[1-2][0-9]|3[0-2])$"
+    },
+    {
+      "name": "singlenode_vm_os_password",
+      "description": "The user password to use while configuring the MySQL Node",
+      "type": "password",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node Template User Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_os_user",
+      "description": "The user name to use while configuring the MySQL Node.",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node Template User Password",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_template",
+      "description": "Virtual Machine Template Name",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "singlenode_vm_template",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "vm_adapter_type",
+      "description": "Network adapter type for vNIC Configuration",
+      "default": "vmxnet3",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "vSphere Network Adapter Type",
+      "hidden": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "vm_dns_servers",
+      "description": "List of DNS servers for the virtual network adapter. For more than one DNS, the values can be entered by adding more fields.",
+      "type": "list",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node DNS Servers",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "vm_dns_suffixes",
+      "description": "Name resolution suffixes for the virtual network adapter",
+      "type": "list",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node DNS Suffixes",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "vm_domain",
+      "description": "MySQL Node Virtual Machine's domain name",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "MySQL Node Domain Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "vm_folder",
+      "description": "vSphere Folder name",
+      "type": "string",
+      "required": false,
+      "secured": false,
+      "label": "vSphere Folder Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "vm_network_interface_label",
+      "description": "vSphere Port Group name to assign to this network interface.",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "vSphere Port Group Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "cloud"
+      
+    },
+    {
+      "name": "vsphere_datacenter",
+      "description": "The name of a Datacenter in which to launch the MySQL Node.",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "vSphere DataCenter Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "vsphere_resource_pool",
+      "description": "Name of the default resource pool for the cluster. Specified as 'cluster_name/resource_pool'",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "vSphere Resource Pool",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "cloud"
+    }
+  ],
+  "template_output_params": []
+}

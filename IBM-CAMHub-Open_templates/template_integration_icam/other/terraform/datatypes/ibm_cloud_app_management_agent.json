@@ -1,0 +1,67 @@
+{
+    "name": "ibm_cloud_app_management_agent",
+    "label": "ibm_cloud_app_management_agent",
+    "description": "Data structure describing the IBM Cloud App Management agent to be deployed on a host",
+    "attributes": [
+        {
+            "name": "icam_agent_location",
+            "type": "string",
+            "description": "Source for the IBM Cloud App Management Agent installer, eg http://IP_ADDRESS:8888/APP_MGMT_Agent_Install_2018.2.0",
+            "label": "Agent source location",
+            "required": "true",
+            "secured": "false",
+            "immutable": "false",
+            "hidden": "false",
+            "default": "",
+            "options": null
+        },
+        {
+            "name": "icam_agent_location_credentials",
+            "type": "password",
+            "description": "redentials required to retrieve the IBM Cloud App Management agent, provided in a user:password format",
+            "label": "Agent source location credentials",
+            "required": "false",
+            "secured": "true",
+            "immutable": "false",
+            "hidden": "false",
+            "default": "",
+            "options": null
+        },
+        {
+            "name": "icam_agent_source_subdir",
+            "type": "string",
+            "description": "Subdirectory within the installer where the installation files reside, eg APP_MGMT_Agent_Install_2018.2.0",
+            "label": "Agent subdirectory",
+            "required": "true",
+            "secured": "false",
+            "immutable": "false",
+            "hidden": "false",
+            "default": "APP_MGMT_Agent_Install_2018.2.0",
+            "options": null
+        },
+        {
+            "name": "icam_agent_installation_dir",
+            "type": "string",
+            "description": "IBM Cloud App Management installation directory",
+            "label": "Agent installation directory",
+            "required": "true",
+            "secured": "false",
+            "immutable": "false",
+            "hidden": "false",
+            "default": "/opt/ibm/apm/agent",
+            "options": null
+        },
+        {
+            "name": "icam_agent_name",
+            "type": "string",
+            "description": "IBM Cloud App Management agent to be installed. For example, os.",
+            "label": "Agent name",
+            "required": "true",
+            "secured": "false",
+            "immutable": "false",
+            "hidden": "false",
+            "default": "os",
+            "options": null
+        }
+    ]
+}

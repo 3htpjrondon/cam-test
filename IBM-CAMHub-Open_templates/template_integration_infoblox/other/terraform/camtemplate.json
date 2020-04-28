@@ -1,0 +1,60 @@
+{
+	"name": "Infoblox Integration Template",
+	"description": "This template gets and returns an IP address from Infoblox via camc_scriptpackage",
+	"version": "2.1",
+	"imageUrl": "",
+	"image": "",
+	"type": "integration",
+	"status": "active",
+	"manifest": {
+		"template_type": "Terraform",
+		"template_format": "HCL",
+		"template_provider": "Other",
+		"template": {
+			"templateData": "",
+			"templateVariables": "",
+			"templateOutput": ""
+		},
+		"template_source": {
+			"githubRepoUrl": "",
+			"githubAccessToken": "",
+			"relativePathToTemplateFolder": "other/terraform",
+			"templateFileName": "main.tf"
+		}
+	},
+	"metadata": {
+		"providerDisplayName": "Other",
+		"longDescription": "This template gets and returns an IP address from Infoblox via camc_scriptpackage",
+		"bullets": [{
+				"title": "Clouds",
+				"description": " Other<br>"
+			},
+			{
+				"title": "Operating Systems Supported",
+				"description": "N/A, Execution occurs on the CAM engine<br>"
+			},
+			{
+				"title": "Topology",
+				"description": "N/A<br>"
+			},
+			{
+				"title": "Software Deployed",
+				"description": "N/A This script is run locally on the terraform server.<br>"
+			},
+			{
+				"title": "Default Virtual Machine Settings",
+				"description": "N/A<br>"
+			},
+			{
+				"title": "Usage and Special Notes",
+				"description": "<ol class=\"list-numbering\"><li>The Infoblox Integration module, with an output of assigned_ip_address, can be composed with other Terraform configurations which require an IP address as input.</li><li>A functional and reachable Infoblox service is required prior to running this template.</li><li>On deletion, this template will release the IP Address from the Infoblox pool.</li></ol>"}
+		],
+		"featuredImageUrl": "",
+		"imageUrl": "",
+		"mediumImageUrl": "",
+		"smallImageUrl": "",
+		"documentationUrl": "",
+		"termsUrl": "",
+		"media": []
+	}
+}

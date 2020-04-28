@@ -1,0 +1,60 @@
+{
+    "name": "APM Configuration for WebSphere Application Server Template",
+    "description": "This template will configure APM for IBM Application Server on Linux.",
+    "version": "2.1",
+    "imageUrl": "",
+    "image": "",
+    "type": "integration",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "Other",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "other/terraform",
+        "templateFileName": "main.tf"
+      }
+    },
+    "metadata": {
+      "providerDisplayName": "Other",
+      "longDescription": "This template will configure IBM APM agents for WAS on a target node. APM Agents must have already been installed on this node with a minimal of the was and os agents installed. This template will configure the was agent on the target node.",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " All Clouds<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "<ul><li>Ubuntu 16</li><li>Ubuntu 14</li><li>Redhat 6.x<br>Redhat 7.x</li><ul>"},
+{
+    "title": "Topology",
+    "description": "Deployed on a single Linux node with APM and WebSphere already installed.<br>"},
+{
+    "title": "Software Deployed",
+    "description": "IBM Cloud Application Performance Management Agent for WebSphere.<br>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": " vCPU 1, Memory (GB) 2, Disk (GB) 10<br>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "<ol class=\"list-numbering\"><li>The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.</li><li>IBM Knowledge Center for APM - <a href=\"https://www.ibm.com/support/knowledgecenter/en/SSHLNR_8.1.3/com.ibm.pm.doc/welcome.htm\" target=\"_blank\">https://www.ibm.com/support/knowledgecenter/en/SSHLNR_8.1.3/com.ibm.pm.doc/welcome.htm</a></li><li>This integration template is run remotely on the Target Virtual Machine</li><li>This template will configure the was agent to all local WebSphere Servers.</li><ol>"
+}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    },
+    "toolchain": {
+      "git": "https://github.com/ibmcam/cam-toolchain"
+    }
+}

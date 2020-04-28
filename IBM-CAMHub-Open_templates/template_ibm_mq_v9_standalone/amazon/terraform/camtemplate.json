@@ -1,0 +1,59 @@
+{
+    "name": "IBM MQ V9 on a single virtual machine - Amazon EC2",
+    "description": "Install and configure IBM MQ V9 on a single Linux virtual machine.",
+    "version": "2.1",
+    "imageUrl": "",
+    "image": "",
+    "type": "chefcontent",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "Amazon EC2",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "amazon/terraform",
+        "templateFileName": "ibm_mq_v9_standalone.tf"
+      }
+    },
+    "metadata": {
+      "providerDisplayName": "Amazon EC2",
+      "longDescription": "Install and configure IBM MQ V9 on a single Linux virtual machine.",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " Amazon<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "<ul><li>Red Hat Enterprise Linux 7</li><li>Ubuntu 16.04 LTS</li><li>Ubuntu 14.04 LTS</li></ul>"},
+{
+    "title": "Topology",
+    "description": "<ul><li>1 virtual machine:</li><li> IBM MQ instance</li></ul>"},
+{
+    "title": "Software Deployed",
+    "description": "IBM MQ V9.0<br>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": " t2.medium, vCPU 2, Mem (GiB) 4, EBS (GB) 100<br>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "<ol class=\"list-numbering\"><li>The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.</li><li>IBM Knowledge Center for IBM MQ V9.0 - <a href=\"https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm\" target=\"_blank\">https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.helphome.v90.doc/WelcomePagev9r0.htm</a></li><li>IBM Support Portal - <a href=\"https://www.ibm.com/support/home/\" target=\"_blank\">https://www.ibm.com/support/home/</a></li></ol>"}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    },
+    "toolchain": {
+      "git": "https://github.com/ibmcam/cam-toolchain"
+    }
+}

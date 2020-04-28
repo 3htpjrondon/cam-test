@@ -1,0 +1,186 @@
+{
+  "input_datatypes": [
+    {
+      "name": "bastionhost",
+      "label": "Bastion Data"
+    },
+    {
+      "name": "ipam.infoblox",
+      "label": "Infoblox IPAM Server"
+    }
+  ],    
+  "template_input_params": [
+    {
+      "name": "bastion_host",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion host for ssh proxy",
+      "default": "${bastionhost.bastion_host}",
+      "label": "Bastion host",
+      "secured": false,
+      "required": false
+    },
+    {
+      "name": "bastion_port",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion port for ssh proxy",
+      "default": "${bastionhost.bastion_port}",
+      "label": "Bastion port",
+      "secured": false,
+      "required": false
+    },
+    {
+      "name": "bastion_user",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion user for ssh proxy",
+      "default": "${bastionhost.bastion_user}",
+      "label": "Bastion user",
+      "secured": false,
+      "required": false
+    },
+    {
+      "name": "bastion_private_key",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion private key for ssh proxy",
+      "default": "${bastionhost.bastion_private_key}",
+      "label": "Bastion private key",
+      "secured": true,
+      "required": false
+    },
+    {
+      "name": "bastion_password",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion user password for ssh proxy",
+      "default": "${bastionhost.bastion_password}",
+      "label": "Bastion user password",
+      "secured": true,
+      "required": false
+    },
+    {
+      "name": "bastion_host_key",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion host public key for ssh proxy",
+      "default": "${bastionhost.bastion_host_key}",
+      "label": "Bastion host key",
+      "secured": false,
+      "required": false
+    },   
+    {
+      "name": "hostname",
+      "description": "The hostname to associate with the requested IP address.",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Host Name",
+      "hidden": false,
+      "group_name": "infoblox",
+      "immutable": false
+    },
+    {
+      "name": "domain",
+      "description": "The domain name to associate with the host names on the requested IP address.",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Domain Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "infoblox",
+      "default" : "${ipam.infoblox.domain}"
+    },
+    {
+      "name": "configure_for_dns",
+      "description": "Indicates that infoblox server needs to configure the DNS server when the host record is enable.",
+      "type": "boolean",
+      "required": true,
+      "secured": false,
+      "label": "Configure DNS",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "infoblox",
+      "default" : "${ipam.infoblox.configure_for_dns}"
+    },    
+    {
+      "name": "infoblox_ip_address",
+      "description": "The IP address of the Infoblox server.",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Infoblox Server IP Address",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "infoblox",
+      "default" : "${ipam.infoblox.infoblox_ip_address}"
+    },
+    {
+      "name": "infoblox_user",
+      "description": "The user name to access the Infoblox server.",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Infoblox User",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "infoblox",
+      "default" : "${ipam.infoblox.infoblox_user}"
+    },
+    {
+      "name": "infoblox_user_password",
+      "description": "The user password to access the Infoblox server.",
+      "type": "password",
+      "required": true,
+      "secured": true,
+      "label": "Infoblox User Password",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "infoblox",
+      "default" : "${ipam.infoblox.infoblox_user_password}"
+    },
+    {
+      "name": "network",
+      "description": "The network defined in Infoblox from which to get an IP address.",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Network",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "infoblox",
+      "default" : "${ipam.infoblox.network}"
+    }
+  ],
+  "template_output_params": [
+    {
+      "name": "assigned_ip_address",
+      "label": "Assigned IP Address",
+      "description": "The IP address assigned from Infoblox IPAM.",
+      "secured": false,
+      "hidden": false
+    },
+    {
+      "name": "associated_domain",
+      "label": "Associated Domain",
+      "description": "The domain associated with the assigned IP address.",
+      "secured": false,
+      "hidden": false
+    },
+    {
+      "name": "associated_hostname",
+      "label": "Associated Hostname",
+      "description": "The hostname associated with the assigned IP address.",
+      "secured": false,
+      "hidden": false
+    }
+  ]
+}

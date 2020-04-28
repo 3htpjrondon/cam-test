@@ -1,0 +1,627 @@
+{  
+ "input_datatypes": [
+    {
+      "name": "bastionhost",
+      "label": "Bastion Data"
+    }
+  ],
+  "output_datatypes": [
+    {
+      "name": "com.ibm.cloud.cloudconnections.ICP",
+      "dataobject": {
+        "name": "${template_output_params.connection_name}",
+        "attributes": [
+          {
+            "name": "username",
+            "value": "${template_output_params.ibm_cloud_private_admin_user}"
+          },
+          {
+            "name": "password",
+            "value": "${template_output_params.ibm_cloud_private_admin_password}"
+          },
+          {
+            "name": "ICP_server",
+            "value": "${template_output_params.ibm_cloud_private_master_ip}"
+          }
+        ]
+      }
+    }
+  ],      
+  "input_groups": [
+    {
+      "name": "bastion",
+      "label": "Bastion host variables"
+    }
+  ],
+    "input_groups": [
+      {
+        "name": "cloud",
+        "label": "Cloud Input Variables"
+      },
+      {
+        "name": "icpdownload",
+        "label": "IBM Cloud Private Download Settings"
+      },
+      {
+        "name": "generalvmtemplate",
+        "label": "IBM Cloud Private VM Settings"
+      },  
+      {
+        "name": "generalvmtemplatenet",
+        "label": "IBM Cloud Private Network Settings"
+      },      
+          
+      {
+        "name": "bootvirtualmachine",
+        "label": "Boot Node Input Settings"
+      },
+      {
+        "name": "mastervirtualmachine",
+        "label": "Master Nodes Input Settings"
+      },
+      {
+        "name": "proxyvirtualmachine",
+        "label": "Proxy Nodes Input Settings"
+      },
+      {
+        "name": "workervirtualmachine",
+        "label": "Worker Nodes Input Settings"
+      },
+      {
+        "name": "mgmtvirtualmachine",
+        "label": "Management Node Input Settings"
+      },      
+      {
+        "name": "vavirtualmachine",
+        "label": "Vulnerability Advisor Node Input Settings"
+      }      
+    ],  
+	"output_groups": [{
+		"name": "content_template_output",
+		"label": "Outputs"
+	}],             
+  "template_input_params": [
+       {
+        "name": "bastion_host",
+        "type": "string",
+        "group_name": "bastion",
+        "hidden": true,
+        "description": "Bastion host for ssh proxy",
+        "default": "${bastionhost.bastion_host}",
+        "label": "Bastion host",
+        "secured": false,
+        "required": false
+      },
+      {
+        "name": "bastion_port",
+        "type": "string",
+        "group_name": "bastion",
+        "hidden": true,
+        "description": "Bastion port for ssh proxy",
+        "default": "${bastionhost.bastion_port}",
+        "label": "Bastion port",
+        "secured": false,
+        "required": false
+      },
+      {
+        "name": "bastion_user",
+        "type": "string",
+        "group_name": "bastion",
+        "hidden": true,
+        "description": "Bastion user for ssh proxy",
+        "default": "${bastionhost.bastion_user}",
+        "label": "Bastion user",
+        "secured": false,
+        "required": false
+      },
+      {
+        "name": "bastion_private_key",
+        "type": "string",
+        "group_name": "bastion",
+        "hidden": true,
+        "description": "Bastion private key for ssh proxy",
+        "default": "${bastionhost.bastion_private_key}",
+        "label": "Bastion private key",
+        "secured": true,
+        "required": false
+      },
+      {
+        "name": "bastion_password",
+        "type": "string",
+        "group_name": "bastion",
+        "hidden": true,
+        "description": "Bastion user password for ssh proxy",
+        "default": "${bastionhost.bastion_password}",
+        "label": "Bastion user password",
+        "secured": true,
+        "required": false
+      },
+      {
+        "name": "bastion_host_key",
+        "type": "string",
+        "group_name": "bastion",
+        "hidden": true,
+        "description": "Bastion host public key for ssh proxy",
+        "default": "${bastionhost.bastion_host_key}",
+        "label": "Bastion host key",
+        "secured": false,
+        "required": false
+      },
+    {
+      "name": "aadClientId",
+      "type": "string",
+      "group_name": "generalvmtemplate",
+      "hidden": false,
+      "description": "Azure Client ID",
+       "label": "Azure Client ID",
+      "secured": false,
+      "required": true
+    },
+    {
+      "name": "aadClientSecret",
+      "type": "string",
+      "group_name": "generalvmtemplate",
+      "hidden": false,
+      "description": "Azure Client secret",
+      "label": "Azure Client Secret",
+      "secured": false,
+      "required": true
+    },
+
+    {
+      "name": "location",
+      "description": "Region to deploy to",
+      "default": "West Europe",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Region",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "generalvmtemplate"
+    },
+    {
+      "name": "instance_name",
+      "description": "Name of the deployment. Will be added to virtual machine names",
+      "default": "icp",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Deployment Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "generalvmtemplate"
+    },
+    {
+      "name": "default_tags",
+      "default": {
+        "Owner": "icpuser",
+        "Environment" : "icp-test"
+      },
+      "description": "Map of default tags to be assign to any resource that supports it",
+      "type": "map",
+      "required": true,
+      "secured": false,
+      "label": "Resources default tags",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "mastervirtualmachine"
+    },
+    {
+      "name": "resource_group",
+      "description": "Azure resource group name",
+      "default": "icp_rg",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Resource group",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "generalvmtemplate"
+    },
+      
+    {
+      "name": "os_image",
+      "options": [
+        {
+          "value": "ubuntu",
+          "label": "ubuntu",
+          "default": true
+        },
+        {
+          "value": "rhel",
+          "label": "rhel",
+          "default": false
+        }
+        
+	  ],      
+      "description": "Select from Ubuntu (ubuntu) or RHEL (rhel) for the Operating System",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Image type",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "generalvmtemplate"
+    },
+    {
+      "name": "os_image_map",
+	  "default" : {
+	    "rhel_publisher"   : "RedHat",
+	    "rhel_offer"      : "RHEL",
+	    "rhel_sku"         : "7-RAW-CI",
+	    "rhel_version"     : "latest",
+	    "ubuntu_publisher" : "Canonical",
+	    "ubuntu_offer"     : "UbuntuServer",
+	    "ubuntu_sku"      : "16.04-LTS",
+	    "ubuntu_version"   : "latest"
+	  },
+      "description": "OS image map",
+      "type": "map",
+      "required": true,
+      "secured": false,
+      "label": "OS image map",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "generalvmtemplate"
+    },
+    
+    
+    {
+      "name": "admin_username",
+      "description": "Linux vm administrator user name",
+      "default": "icpdeploy",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Virtual Machine  Template User Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "generalvmtemplate"
+    },
+    {
+      "name": "disable_password_authentication",
+      "description": "Whether to enable or disable ssh password authentication for the created Azure VMs.",
+      "default": "true",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Disable Password Authentication",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "generalvmtemplate"
+    },
+
+    {
+      "name": "virtual_network_name",
+      "description": "The name for the Azure virtual network.",
+      "default": "icp_vnet",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Virtual Network Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "generalvmtemplatenet"
+    },
+    {
+      "name": "virtual_network_cidr",
+      "description": "cidr for the Azure virtual network",
+      "default": "10.0.0.0/16",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Virtual Network cidr",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "generalvmtemplatenet"
+    },
+    {
+      "name": "subnet_name",
+      "description": "The subnet name.",
+      "default": "icp_subnet",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Virtual Network subnet name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "generalvmtemplatenet"
+     },    
+    {
+      "name": "subnet_prefix",
+      "description": "The address prefix to use for the VM subnet.",
+      "default": "10.0.0.0/24",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Virtual Network subnet address prefix",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "generalvmtemplatenet"
+    },    
+    {
+      "name": "route_table_name",
+      "description": "The name for the route table.",
+      "default": "icp_route",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Virtual Network route table name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "generalvmtemplatenet"
+    },
+    
+    {
+      "name": "master",
+      "default": {
+        "nodes": "1",
+        "name" : "master",
+        "vm_size" : "Standard_A8_v2",
+    	"os_disk_size"  : "300",               
+        "os_disk_type": "Standard_LRS",
+        "docker_disk_size": "100",
+        "docker_disk_type": "Standard_LRS"        
+      },
+      "description": "Master Node vm settings",
+      "type": "map",
+      "required": true,
+      "secured": false,
+      "label": "Master Node vm settings",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "mastervirtualmachine"
+    },
+    {
+      "name": "proxy",
+      "default": {
+        "nodes": "1",
+        "name" : "proxy",
+        "vm_size" : "Standard_A2_v2",
+    	"os_disk_size"  : "150",                               
+        "os_disk_type": "Standard_LRS",
+        "docker_disk_size": "100",
+        "docker_disk_type": "Standard_LRS"        
+      },
+      "description": "Proxy Node vm settings. If set to 0, the master node becomes proxy too.",
+      "type": "map",
+      "required": true,
+      "secured": false,
+      "label": "Proxy Node vm settings",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "proxyvirtualmachine"
+    }, 
+    {
+      "name": "worker",
+      "default": {
+        "nodes": "2",
+        "name" : "worker",
+        "vm_size" : "Standard_A4_v2",
+    	"os_disk_size"  : "150",                               
+        "os_disk_type": "Standard_LRS",
+        "docker_disk_size": "100",
+        "docker_disk_type": "Standard_LRS"        
+      },
+      "description": "Worker Node vm settings.If set to 0, the master node becomes worker too.",
+      "type": "map",
+      "required": true,
+      "secured": false,
+      "label": "Worker Node vm settings",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "workervirtualmachine"
+    },          
+    {
+      "name": "management",
+      "default": {
+        "nodes": "1",      
+        "name" : "mgmt",
+        "vm_size" : "Standard_A8_v2",
+    	"os_disk_size"  : "200",                       
+        "os_disk_type": "Standard_LRS",
+        "docker_disk_size": "100",
+        "docker_disk_type": "Standard_LRS"        
+      },
+      "description": "Management Node vm settings. If the node value is 0, the master node will be set as a management node.",
+      "type": "map",
+      "required": true,
+      "secured": false,
+      "label": "Management Node vm settings",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "mgmtvirtualmachine"
+    },             
+    {
+      "name": "cluster_name",
+      "description": "Deployment name for resources prefix",
+      "default": "myicp",
+      "type": "string",
+      "regex": "(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)",
+      "required": true,
+      "secured": false,
+      "label": "ICP cluster name",
+      "hidden": false,
+      "group_name": "cloud",            
+      "immutable": false
+    },
+    {
+      "name": "icpadmin_password",
+      "description": "Password for the initial admin user in ICP; blank to generate",
+      "type": "password",
+      "required": false,
+      "secured": true,
+      "label": "Password for the initial admin user in ICP",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+    "name": "network_cidr",
+    "label": "ICP Network CIDR for PODs",
+    "description": "ICP Network CIDR for PODs",
+    "default": "10.0.128.0/17",
+    "hidden": false,
+    "immutable": false,
+    "required": true,
+    "secured": false,
+    "group_name": "cloud",    
+    "type": "string"
+  },
+    {
+    "name": "cluster_ip_range",
+    "label": "ICP Service Cluster IP Range",
+    "description": "ICP Service Cluster IP Range",
+    "default": "10.1.0.0/24",
+    "hidden": false,
+    "immutable": false,
+    "required": true,
+    "secured": false,
+    "group_name": "cloud",    
+    "type": "string"
+  },
+  {
+    "name": "icp_version",
+    "description": "IBM Cloud Private Version Number",
+    "default" : "3.1.1",
+    "type": "string",
+    "required": false,
+    "secured": false,
+    "label": "IBM Cloud Private Version",
+    "hidden": false,
+    "immutable": false,
+    "group_name": "cloud"
+  },
+    {
+      "name": "disabled_management_services",
+      "description": "List of disabled management services",
+      "default": ["istio", "vulnerability-advisor", "storage-glusterfs", "storage-minio", "metrics-server", "custom-metrics-adapter", "image-security-enforcement", "metering", "monitoring", "logging", "audit-logging"],
+      "type": "list",
+      "required": true,
+      "secured": false,
+      "label": "ICP disabled management services",
+      "hidden": false,
+      "group_name": "cloud",            
+      "immutable": false
+    }
+      
+],
+  "template_output_params": [
+    {
+      "name": "ibm_cloud_private_boot_ip",
+      "type": "string",
+      "description": "IBM Cloud Private Cluster Boot node IP.",
+      "hidden": false,
+      "label": "Boot IP",
+      "group_name": "content_template_output",
+      "secured": false,
+      "system": false,
+      "required": false,
+      "immutable": false
+    }, 
+    {
+      "name": "ibm_cloud_private_master_ip",
+      "type": "string",
+      "description": "IBM Cloud Private Cluster Master node IP",
+      "hidden": false,
+      "label": "Master IP",
+      "group_name": "content_template_output",
+      "secured": false,
+      "system": false,
+      "required": false,
+      "immutable": false
+    },
+    {
+      "name": "ibm_cloud_private_admin_url",
+      "type": "url",
+      "description": "IBM Cloud Private Cluster URL.",
+      "hidden": false,
+      "label": "IBM Cloud Private Cluster URL",
+      "group_name": "content_template_output",
+      "secured": false,
+      "system": false,
+      "required": true,
+      "immutable": false
+    },
+    {
+      "name": "ibm_cloud_private_cluster_name",
+      "description": "IBM Cloud Private Cluster Name",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "IBM Cloud Private Cluster Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "content_template_output"
+    },   
+    {
+      "name": "ibm_cloud_private_cluster_CA_domain_name",
+      "description": "IBM Cloud Private Cluster CA Domain Name",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "IBM Cloud Private Cluster CA Domain Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "content_template_output"
+    },                   
+    {
+      "name": "ibm_cloud_private_admin_user",
+      "description": "IBM Cloud Private Admin Username",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "IBM Cloud Private Admin Username",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "ibm_cloud_private_admin_password",
+      "description": "IBM Cloud Private Admin Username Password",
+      "type": "string",
+      "required": true,
+      "secured": true,
+      "label": "IBM Cloud Private Admin Password",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "ibm_cloud_private_ssh_user",
+      "description": "IBM Cloud Private VM SSH Username",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "IBM Cloud Private SSH Username",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "ibm_cloud_private_ssh_key",
+      "description": "IBM Cloud Private VM SSH Key",
+      "type": "string",
+      "required": false,
+      "secured": false,
+      "label": "IBM Cloud Private SSH Key",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "content_template_output"
+    },    
+    {
+      "name": "connection_name",
+      "description": "IBM Cloud Private Connection Name",
+      "type": "string",
+      "required": false,
+      "secured": false,
+      "label": "IBM Cloud Private Connection Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "content_template_output"
+    }    
+
+  ]
+
+}

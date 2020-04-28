@@ -1,0 +1,59 @@
+{
+    "name": "IBM DB2 Enterprise Server Edition V10.5 on a single virtual machine - Amazon EC2",
+    "description": "This template deploys a standalone instance of IBM DB2 Enterprise Server Edition V10.5 on a Linux virtual machine.",
+    "version": "2.1",
+    "imageUrl": "",
+    "image": "",
+    "type": "chefcontent",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "Amazon EC2",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "amazon/terraform",
+        "templateFileName": "ibm_db2_v10_standalone.tf"
+      }
+    },
+    "metadata": {
+      "providerDisplayName": "Amazon EC2",
+      "longDescription": "This template deploys a standalone instance of IBM DB2 Enterprise Server Edition V10.5 on a Linux virtual machine.",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " AWS<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "<ul><li>Red Hat Enterprise Linux 7</li><li>Red Hat Enterprise Linux 6</li><li>Ubuntu 14.04 LTS</li></ul>"},
+{
+    "title": "Topology",
+    "description": "<ul><li>1 virtual machine:</li><li>  IBM DB2 Enterprise Server Edition - one instance, one database</li></ul>"},
+{
+    "title": "Software Deployed",
+    "description": "IBM DB2 Enterprise Server Edition V10.5<br>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": " t2.medium, vCPU 2, Mem (GiB) 4, EBS (GB) 100<br>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "<ol class=\"list-numbering\"><li>The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.</li><li>Detailed system requirements for DB2 V10.5 - <a href=\"https://www.ibm.com/software/reports/compatibility/clarity/index.html\" target=\"_blank\">https://www.ibm.com/software/reports/compatibility/clarity/index.html</a></li><li>Recommended Fix Packs for DB2 - <a href=\"http://www-01.ibm.com/support/docview.wss?uid=swg21321001\" target=\"_blank\">http://www-01.ibm.com/support/docview.wss?uid=swg21321001</a></li><li>IBM Knowledge Center for DB2 V10.5 - <a href=\"https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0\" target=\"_blank\">https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0</a></li><li>IBM Support Portal - <a href=\"https://www.ibm.com/support/home/\" target=\"_blank\">https://www.ibm.com/support/home/</a></li></ol>"}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    },
+    "toolchain": {
+      "git": "https://github.com/ibmcam/cam-toolchain"
+    }
+}

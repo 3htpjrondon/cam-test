@@ -1,0 +1,199 @@
+{
+  "input_datatypes": [
+    {
+      "name": "bastionhost",
+      "label": "Bastion Data"
+    }    
+  ],
+  "template_input_params": [
+    {
+        "name": "azure_region",
+        "label": "Azure Region",
+        "description": "Azure region to deploy infrastructure resources",
+        "hidden": false,
+        "immutable": false,
+        "required": true,
+        "secured": false,
+        "type": "string",
+        "options": [
+          {
+              "value": "West US",
+              "label": "West US",
+              "default": "true"
+          },
+          {
+              "value": "West US 2",
+              "label": "West US 2"
+          },
+          {
+              "value": "East US",
+              "label": "East US"
+          },
+          {
+              "value": "East US",
+              "label": "East US 2"
+          },
+          {
+              "value": "Central US",
+              "label": "Central US"
+          },
+          {
+              "value": "North Central US",
+              "label": "North Central US"
+          },
+          {
+              "value": "South Central US",
+              "label": "South Central US"
+          },
+          {
+              "value": "West Central US",
+              "label": "West Central US"
+          }
+        ]
+    },
+    {
+        "name": "name_prefix",
+        "label": "Prefix of Resource Names",
+        "description": "Prefix of names for Azure resources; The name prefix must be 1-52 alphanumeric characters and dash",
+        "default": "meanstack",
+        "hidden": false,
+        "immutable": false,
+        "required": true,
+        "secured": false,
+        "type": "string",
+        "regex": "^[A-Za-z0-9-]{1,52}$"
+    },
+    {
+        "name": "admin_user",
+        "label": "Admin User to Access Virtual Machines",
+        "description": "Name of an administrative user to be created in all virtual machines in this deployment; The user name must be 1-32 alphanumeric (with beginning at letters) and special characters including -._",
+        "default": "ibmadmin",
+        "hidden": false,
+        "immutable": false,
+        "required": true,
+        "secured": false,
+        "type": "string",
+        "regex": "^[A-Za-z0-9][A-Za-z0-9-._]{0,31}$"
+    },
+    {
+        "name": "admin_user_password",
+        "label": "Admin User Password",
+        "description": "Password of the newly created administrative user; The supplied password must be between 6-72 characters long and must satisfy at least 3 of password complexity requirements from the following: 1) Contains an uppercase character; 2) Contains a lowercase character; 3) Contains a numeric digit; 4) Contains a special character",
+        "hidden": false,
+        "immutable": false,
+        "required": true,
+        "secured": true,
+        "type": "password",
+        "regex": "^[!-~]{6,72}$"
+    },
+    {
+        "name": "user_public_key",
+        "label": "User Public Key",
+        "description": "User-provided public SSH key used to connect to the virtual machine; The provided key must be 'None' or the openSSH format key with optional comment",
+        "default": "None",
+        "hidden": false,
+        "immutable": false,
+        "required": true,
+        "secured": false,
+        "type": "string",
+        "regex": "^None$|^ssh-rsa AAAA[0-9A-Za-z+/]+[=]{0,3}( [^@]+@[^@]+| [^@]+){0,1}$"
+    },
+    {
+      "name": "bastion_host",
+      "type": "string",
+      "hidden": true,
+      "description": "Bastion host for ssh proxy",
+      "default": "${bastionhost.bastion_host}",
+      "label": "Bastion host",
+      "secured": false,
+      "required": false
+    },
+    {
+      "name": "bastion_port",
+      "type": "string",
+      "hidden": true,
+      "description": "Bastion port for ssh proxy",
+      "default": "${bastionhost.bastion_port}",
+      "label": "Bastion port",
+      "secured": false,
+      "required": false
+    },
+    {
+      "name": "bastion_user",
+      "type": "string",
+      "hidden": true,
+      "description": "Bastion user for ssh proxy",
+      "default": "${bastionhost.bastion_user}",
+      "label": "Bastion user",
+      "secured": false,
+      "required": false
+    },
+    {
+      "name": "bastion_private_key",
+      "type": "string",
+      "hidden": true,
+      "description": "Bastion private key for ssh proxy",
+      "default": "${bastionhost.bastion_private_key}",
+      "label": "Bastion private key",
+      "secured": true,
+      "required": false
+    },
+    {
+      "name": "bastion_password",
+      "type": "string",
+      "hidden": true,
+      "description": "Bastion user password for ssh proxy",
+      "default": "${bastionhost.bastion_password}",
+      "label": "Bastion user password",
+      "secured": true,
+      "required": false
+    },
+    {
+      "name": "bastion_host_key",
+      "type": "string",
+      "hidden": true,
+      "description": "Bastion host public key for ssh proxy",
+      "default": "${bastionhost.bastion_host_key}",
+      "label": "Bastion host key",
+      "secured": false,
+      "required": false
+    }
+  ],
+  "template_output_params": [
+    {
+      "name": "meanstack_web_vm_public_ip",
+      "type": "string",
+      "hidden": false,
+      "label": "Web VM Public IP",
+      "secured": false
+    },     
+    {
+      "name": "meanstack_web_vm_private_ip",
+      "type": "string",
+      "hidden": false,
+      "label": "Web VM Private IP",
+      "secured": false
+    },     
+    {
+      "name": "meanstack_db_vm_public_ip",
+      "type": "string",
+      "hidden": false,
+      "label": "DB VM Public IP",
+      "secured": false
+    },     
+    {
+      "name": "meanstack_db_vm_private_ip",
+      "type": "string",
+      "hidden": false,
+      "label": "DB VM Private IP",
+      "secured": false
+    },     
+    {
+      "name": "meanstack_sample_application_url",
+      "type": "url",
+      "hidden": false,
+      "label": "Sample Application URL",
+      "secured": false
+    }
+  ]
+}

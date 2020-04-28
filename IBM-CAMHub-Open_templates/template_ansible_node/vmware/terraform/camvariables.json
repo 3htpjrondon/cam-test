@@ -1,0 +1,307 @@
+{
+  "input_groups": [
+    {
+      "name": "cloud",
+      "label": "Cloud Input Variables"
+    },
+    {
+      "name": "virtualmachine",
+      "label": "Virtual Machine Input Settings"
+    }
+
+	],
+	"output_groups": [{
+		"name": "content_template_output",
+		"label": "Outputs"
+	}],
+  "template_input_params": [
+      {
+        "name": "singlenode_prefix_name",
+        "description": "Ansible Node Hostname Prefix",
+        "type": "string",
+        "required": true,
+        "secured": false,
+        "label": "Ansible Node Hostname Prefix",
+        "hidden": false,
+        "immutable": false,
+        "group_name": "virtualmachine"
+      },
+      {
+      "name": "singlenode_memory",
+      "description": "Ansible Node Node Memory Allocation (mb)",
+      "default": "4096",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node Memory Allocation (mb)",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+
+    {
+      "name": "singlenode_vcpu",
+      "description": "Ansible Node vCPU Allocation",
+      "default": "2",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node vCPU Allocation",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_disk1_datastore",
+      "description": "Virtual Machine Datastore Name - Disk 1",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node Datastore Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_disk1_keep_on_remove",
+      "description": "Ansible Node Keep Disk on Remove",
+      "default": "true",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node Keep Disk on Remove",
+      "hidden": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_disk1_size",
+      "description": "Ansible Node Disk Size (GB)",
+      "default": "100",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node Disk Size (GB)",
+      "hidden": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_disk2_datastore",
+      "description": "Virtual Machine Datastore Name - Disk 2",
+      "default": "",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node Datastore Name - Disk 2",
+      "hidden": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_disk2_enable",
+      "description": "Ansible Node Disk 2",
+      "default": "false",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node Keep Disk on Remove - Disk 2",
+      "hidden": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_disk2_keep_on_remove",
+      "description": "Ansible Node Keep Disk 2 on Remove",
+      "default": "",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node Keep Disk on Remove - Disk 2",
+      "hidden": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_disk2_size",
+      "description": "Ansible Node Disk 2 Size (GB)",
+      "default": "",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node Disk Size (GB) - Disk 2",
+      "hidden": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_ipv4_address",
+      "description": "Ansible Node IP Address (list)",
+      "type": "list",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node IP Address",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine",
+      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
+      "regexdesc": "Provide a Valid IP address for the Virtual Machine"
+    },
+    {
+      "name": "singlenode_vm_ipv4_gateway",
+      "description": "Ansible Node IP Gateway Address",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node IP Gateway",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine",
+			"regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
+      "regexdesc": "Provide a Valid IP address for the Virtual Machine Gateway"
+    },
+    {
+      "name": "singlenode_vm_ipv4_prefix_length",
+      "description": "Integer value between 1 and 32 for the prefix length, CIDR, to use when statically assigning an IPv4 address",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node IP Netmask (CIDR)",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine",
+      "regex": "^([8-9]|[1-2][0-9]|3[0-2])$"
+    },
+    {
+      "name": "singlenode_vm_os_user",
+      "description": "The user name to use while configuring the Ansible Node.",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node Template User Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_os_password",
+      "description": "The user password to use while configuring the Ansible Node",
+      "type": "password",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node Template User Password",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "singlenode_vm_template",
+      "description": "Virtual Machine Template Name",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node Template Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "vm_adapter_type",
+      "description": "Network adapter type for vNIC Configuration",
+      "default": "vmxnet3",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "vSphere Network Adapter Type",
+      "hidden": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "vm_dns_servers",
+      "description": "List of DNS servers for the virtual network adapter. For more than one DNS, the values can be entered by adding more fields.",
+      "type": "list",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node DNS Servers",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "vm_dns_suffixes",
+      "description": "Name resolution suffixes for the virtual network adapter",
+      "type": "list",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node DNS Suffixes",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "vm_domain",
+      "description": "Ansible Node Virtual Machine's domain name",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Ansible Node Domain Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "vm_folder",
+      "description": "vSphere Folder name",
+      "type": "string",
+      "required": false,
+      "secured": false,
+      "label": "vSphere Folder Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "vm_network_interface_label",
+      "description": "vSphere Port Group name to assign to this network interface.",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "vSphere Port Group Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "vsphere_datacenter",
+      "description": "The name of a Datacenter in which to launch the Ansible Node.",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "vSphere DataCenter Name",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "vsphere_resource_pool",
+      "description": "Name of the default resource pool for the cluster. Specified as 'cluster_name/resource_pool'",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "vSphere Resource Pool",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "cloud"
+    }
+  ],
+  "template_output_params": [
+    {
+      "name": "Ansible Public SSH Key for other machines",
+      "label": "Ansible Public SSH Key for other machines",
+      "description": "",
+      "secured": false,
+      "hidden": false
+    }
+  ]
+}

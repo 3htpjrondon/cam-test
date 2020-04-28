@@ -1,0 +1,60 @@
+# Configuration file for CAMHub publishing
+# @see: https://github.ibm.com/OpenContent/pattern-build/blob/development/tasks/camhub.md
+
+# The CAMHub/GitHub server & organization details (per branch)
+cam_hub:
+  development: # publishing target for the `development` branch
+    hostname: github.ibm.com   # CAMHub/GitHub hostname
+    org_name: CAMHub-Open-Development    # CAMHub organization name
+    master_publish : true
+
+  test: # publishing target for the `test` branch
+    hostname: github.ibm.com   # CAMHub/GitHub hostname
+    org_name: CAMHub-Test    # CAMHub organization name
+
+  master: # publishing target for the `master` branch
+    hostname: github.com   # CAMHub/GitHub hostname
+    org_name: IBM-CAMHub-Open    # CAMHub organization name
+    master_publish: true
+
+# repo_options:
+#   Repository options when creating the CAMHub git repo
+#   see: https://developer.github.com/v3/repos/#create
+# All keys must be Ruby Symbols (start with ':')
+repo_options:
+  :private: false         # Should be a private reopsitory?
+  :has_issues: false     # Enable GitHub Issues on the repo?
+  :has_wiki: false       # Enable GitHub Wikis on the repo?
+  :has_downloads: false  # Enable GitHub Downloads on the repo?
+  :auto_init: true       # Automatically initialize the repo? Should stay 'true'
+
+# git_tag:
+#   Specifies how the git tag should be calculated
+#   If this is not specified, then pushes to CAMHub will NOT be tagged!!
+git_tag:
+  # ruby_eval: Ruby snippet that is `eval()` to calculate the semver number
+  # Examples:
+  ruby_eval: "'2.0.11'"  # fixed version number (must be changed on each push)
+
+  # For cookbooks, use the semver from the cookbook's `metadata.rb` file
+  # ruby_eval: "`find . -name 'metadata.rb' -type f | xargs grep ^version | awk -F \"'\" '{print $2}'`"
+
+  # Enforce semantic versioning naming scheme
+  # Default is true
+  # @see: http://semver.org/
+  enforce_semver: true
+
+# excludes:
+#   Prevent pushing files from the source repository into CAMHub.  Used to
+#   keep test-cases and other internal files from being published externally.
+
+#   Each item in the list results in a `tar --exclude=<pattern>`
+#   See: http://www.hep.by/gnu/tar/exclude.html#SEC108
+excludes:
+  - "./environments/*"
+  - travis_wait*.log
+  - "*/heat/*"
+  - "*.tfvars"
+  - "*_variables.tf"
+  - override_variables.json
+  - Information.md

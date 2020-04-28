@@ -1,0 +1,60 @@
+{
+    "name": "APM Agent Installation Template",
+    "description": "This template will install IBM APM agents on a target node.",
+    "version": "2.1",
+    "imageUrl": "",
+    "image": "",
+    "type": "integration",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "Other",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "other/terraform",
+        "templateFileName": "main.tf"
+      }
+    },
+    "metadata": {
+      "providerDisplayName": "Other",
+      "longDescription": "This template will install IBM APM agents on a target node. The APM Agent Installation package(APMADV_Agent_Install.tar) must be loaded in the environment and accessible via a target URI (http/s, ftp, file).",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " All Clouds<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "<ul><li>Ubuntu 16</li><li>Ubuntu 14</li><li>Redhat 6.x</li><li>Redhat 7.x</li></ul>"},
+{
+    "title": "Topology",
+    "description": "Deployed on a single Linux node. Script is executed remotely.<br>"},
+{
+    "title": "Software Deployed",
+    "description": "IBM Cloud Application Performance Management Advanced agent deployment package for Linux<br>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": " vCPU 1, Memory (GB) 2, Disk (GB) 10, 100MB free in /tmp<br>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "<ol class=\"list-numbering\"><li>The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.</li><li>IBM Knowledge Center for APM - <a href=\"https://www.ibm.com/support/knowledgecenter/en/SSHLNR_8.1.3/com.ibm.pm.doc/welcome.htm\" target=\"_blank\">https://www.ibm.com/support/knowledgecenter/en/SSHLNR_8.1.3/com.ibm.pm.doc/welcome.htm</a></li><li>This integration template is run remotely on the Target Virtual Machine</li><li>The APM Agent installation file (APMADV_Agent_Install.tar) must be accessible via a URI.</li></ol>"
+}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    },
+    "toolchain": {
+      "git": "https://github.com/ibmcam/cam-toolchain"
+    }
+}

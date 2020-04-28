@@ -1,0 +1,59 @@
+{
+    "name": "Oracle Database 12c Enterprise Edition on a single virtual machine - VMware vSphere",
+    "description": "This template deploys Oracle Enterprise Database V12c with a raw database on a Linux virtual machine.",
+    "version": "2.1",
+    "imageUrl": "",
+    "image": "",
+    "type": "chefcontent",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "VMware vSphere",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "vmware/terraform",
+        "templateFileName": "oracle_database_v12c_standalone.tf"
+      }
+    },
+    "metadata": {
+      "providerDisplayName": "VMware vSphere",
+      "longDescription": "This template deploys Oracle Enterprise Database V12c with a raw database on a Linux virtual machine.",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " VMware<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "Red Hat Enterprise Linux 7<br>"},
+{
+    "title": "Topology",
+    "description": "<ul><li>1 virtual machine:</li><li>Oracle Database 12c instance</li></ul>"},
+{
+    "title": "Software Deployed",
+    "description": "Oracle Database 12c Enterprise Edition<br>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": " vCPU 2, Memory (GB) 8, Disk (GB) 100<br>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "<ol class=\"list-numbering\"><li>The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.</li><li>Detailed system requirements for Oracle Database 12c - <a href=\"https://docs.oracle.com/en/database\" target=\"_blank\">https://docs.oracle.com/en/database</a></li></ol>"}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    },
+    "toolchain": {
+      "git": "https://github.com/ibmcam/cam-toolchain"
+    }
+}

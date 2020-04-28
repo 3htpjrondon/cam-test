@@ -1,0 +1,309 @@
+{
+    "mysql": {
+        "config": {
+            "data_dir": {
+                "default": "/var/lib/mysql",
+                "description": "Directory to store information managed by MySQL server",
+                "displayname": "MySQL Data Directory",
+                "hidden": "false",
+                "immutable_after_create": "true",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "selectable": "true",
+                "type": "string"
+            },
+            "databases": {
+                "database_1": {
+                    "database_name": {
+                        "default": "MyDB",
+                        "description": "Create a sample database in MySQL",
+                        "displayname": "Sample Database Name",
+                        "hidden": "false",
+                        "immutable_after_create": "true",
+                        "parm_type": "node",
+                        "precedence_level": "node",
+                        "required": "true",
+                        "selectable": "true",
+                        "type": "string"
+                    },
+                    "users": {
+                        "user_1": {
+                            "name": {
+                                "default": "defaultUser",
+                                "description": "Name of the first user which is created and allowed to access the created sample database ",
+                                "displayname": "First User Name to Access the Sample Database",
+                                "hidden": "false",
+                                "immutable_after_create": "true",
+                                "parm_type": "node",
+                                "precedence_level": "node",
+                                "required": "true",
+                                "selectable": "true",
+                                "type": "string"
+                            },
+                            "password": {
+                                "default": "",
+                                "description": "Password of the first user",
+                                "displayname": "First User Password to Access the Sample Database",
+                                "hidden": "false",
+                                "immutable_after_create": "true",
+                                "parm_type": "node",
+                                "precedence_level": "node",
+                                "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[$@$!%*?&])[A-Za-z\\\\d$@$!%*?&]{8,}$",
+                                "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character from supported list \"$@$!%*?&\".",
+                                "required": "true",
+                                "secret": "true",
+                                "selectable": "true",
+                                "type": "string"
+                            }
+                        },
+                        "user_2": {
+                            "name": {
+                                "default": "defaultUser2",
+                                "description": "Name of the second user which is created and allowed to access the created sample database",
+                                "displayname": "Second User Name to Access the Sample Database",
+                                "hidden": "false",
+                                "immutable_after_create": "true",
+                                "parm_type": "node",
+                                "precedence_level": "node",
+                                "required": "true",
+                                "selectable": "true",
+                                "type": "string"
+                            },
+                            "password": {
+                                "default": "",
+                                "description": "Password of the second user",
+                                "displayname": "Second User Password to Access the Sample Database",
+                                "hidden": "false",
+                                "immutable_after_create": "true",
+                                "parm_type": "node",
+                                "precedence_level": "node",
+                                "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[$@$!%*?&])[A-Za-z\\\\d$@$!%*?&]{8,}$",
+                                "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character from supported list \"$@$!%*?&\".",
+                                "required": "true",
+                                "secret": "true",
+                                "selectable": "true",
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "engine": {
+                "default": "InnoDB",
+                "description": "MySQL database engine",
+                "displayname": "MySQL engine",
+                "hidden": "false",
+                "immutable_after_create": "true",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "selectable": "true",
+                "type": "string"
+            },
+            "key_buffer_size": {
+                "default": "16M",
+                "description": "Mysql key buffer size",
+                "displayname": "mysql_key_buffer_size",
+                "hidden": "false",
+                "immutable_after_create": "true",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "selectable": "true",
+                "type": "string"
+            },
+            "log_file": {
+                "default": "/var/log/mysqld.log",
+                "description": "Log file configured in MySQL",
+                "displayname": "MySQL Log File",
+                "hidden": "false",
+                "immutable_after_create": "true",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "selectable": "true",
+                "type": "string"
+            },
+            "max_allowed_packet": {
+                "default": "8M",
+                "description": "Mysql key buffer size",
+                "displayname": "mysql_max_allowed_packet",
+                "hidden": "false",
+                "immutable_after_create": "true",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "selectable": "true",
+                "type": "string"
+            },
+            "pid": {
+                "default": "/var/run/mysqld/mysqld.pid",
+                "description": "MySQL pid file",
+                "displayname": "mysql_pid_file",
+                "hidden": "false",
+                "immutable_after_create": "true",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "selectable": "true",
+                "type": "string"
+            },
+            "port": {
+                "default": "3306",
+                "description": "Listen port to be configured in MySQL",
+                "displayname": "MySQL listen port",
+                "hidden": "false",
+                "immutable_after_create": "true",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "selectable": "true",
+                "type": "string"
+            },
+            "socket": {
+                "default": "/var/run/mysqld/mysql.sock",
+                "description": "MySQL socket",
+                "displayname": "mysql_socket",
+                "hidden": "false",
+                "immutable_after_create": "true",
+                "parm_type": "node",
+                "precedence_level": "node",
+                "required": "true",
+                "selectable": "true",
+                "type": "string"
+            }
+        },
+        "install_from_repo": {
+            "choice": [
+                "true",
+                "false"
+            ],
+            "default": "true",
+            "description": "Install MySQL from secure repository server or yum repo",
+            "displayname": "Install MySQL from Secure Repository",
+            "hidden": "false",
+            "immutable_after_create": "true",
+            "options": [
+                "true",
+                "false"
+            ],
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "selectable": "true",
+            "type": "string"
+        },
+        "os_users": {
+            "daemon": {
+                "comment": {
+                    "default": "MySQL instance owner",
+                    "description": "Comment associated with the MySQL OS user",
+                    "displayname": "MySQL OS user description",
+                    "hidden": "false",
+                    "immutable_after_create": "true",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "gid": {
+                    "default": "mysql",
+                    "description": "Group ID of the default OS user to be used to configure MySQL",
+                    "displayname": "Group Name of Default OS User for MySQL",
+                    "hidden": "false",
+                    "immutable_after_create": "true",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "home": {
+                    "default": "/home/mysql",
+                    "description": "Home directory of the default OS user to be used to configure MySQL",
+                    "displayname": "Home Directory of Default OS User for MySQL",
+                    "hidden": "false",
+                    "immutable_after_create": "true",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "ldap_user": {
+                    "choice": [
+                        "true",
+                        "false"
+                    ],
+                    "default": "false",
+                    "description": "A flag which indicates whether to create the MQ USer locally, or utilise an LDAP based user.",
+                    "displayname": "Use LDAP for Authentication",
+                    "hidden": "false",
+                    "immutable_after_create": "true",
+                    "options": [
+                        "true",
+                        "false"
+                    ],
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "name": {
+                    "default": "mysql",
+                    "description": "User Name of the default OS user to be used to configure MySQL",
+                    "displayname": "User Name of Default OS User for MySQL",
+                    "hidden": "false",
+                    "immutable_after_create": "true",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                },
+                "shell": {
+                    "default": "/bin/bash",
+                    "description": "Default shell configured on Linux server",
+                    "displayname": "OS User Shell",
+                    "hidden": "false",
+                    "immutable_after_create": "true",
+                    "parm_type": "node",
+                    "precedence_level": "node",
+                    "required": "true",
+                    "selectable": "true",
+                    "type": "string"
+                }
+            }
+        },
+        "root_password": {
+            "default": "",
+            "description": "The password for the MySQL root user",
+            "displayname": "MySQL root password",
+            "hidden": "false",
+            "immutable_after_create": "true",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[$@$!%*?&])[A-Za-z\\\\d$@$!%*?&]{8,}$",
+            "regexdesc": "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character from supported list \"$@$!%*?&\".",
+            "required": "true",
+            "secret": "true",
+            "selectable": "true",
+            "type": "string"
+        },
+        "version": {
+            "default": "5.7.17",
+            "description": "MySQL Version to be installed",
+            "displayname": "MySQL Version",
+            "hidden": "false",
+            "immutable_after_create": "true",
+            "parm_type": "node",
+            "precedence_level": "node",
+            "required": "true",
+            "selectable": "true",
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "Import existing VM - PowerVC and OpenStack",
+  "description": "This template can be used to import an existing virtual machine into IBM Cloud Automation Manager.",
+  "version": "1.0",
+  "imageUrl": "",
+  "image": "",
+  "type": "import",
+  "manifest": {
+    "template_type": "Terraform",
+    "template_format": "HCL",
+    "template_provider": "OpenStack",
+    "template": {
+      "templateData": "",
+      "templateVariables": "",
+      "templateOutput": ""
+    },
+    "template_source": {
+      "githubRepoUrl": "",
+      "githubAccessToken": "",
+      "relativePathToTemplateFolder": "openstack/terraform",
+      "templateFileName": "import.tf"
+    }
+  },
+  "metadata": {
+    "providerDisplayName": "OpenStack",
+    "longDescription": "This template can be used to import an existing virtual machine into IBM Cloud Automation Manager.",
+    "bullets": [
+    {
+      "title": "Clouds",
+      "description": " PowerVC<br>OpenStack"
+    },
+    {
+      "title": "Usage and Special Notes",
+      "description": "This template cannot be used for deploying new virtual machines."
+    }
+    ],
+    "featuredImageUrl": "",
+    "imageUrl": "",
+    "mediumImageUrl": "",
+    "smallImageUrl": "",
+    "documentationUrl": "",
+    "termsUrl": "",
+    "media": [
+    ]
+  }
+}

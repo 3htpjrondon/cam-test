@@ -1,0 +1,180 @@
+{
+  "input_datatypes": [
+    {
+      "name": "bastionhost",
+      "label": "Bastion Data"
+    }
+  ], 
+  "template_input_params": [
+    {
+      "name": "bastion_host",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion host for ssh proxy",
+      "default": "${bastionhost.bastion_host}",
+      "label": "Bastion host",
+      "secured": false,
+      "required": false
+    },
+    {
+      "name": "bastion_port",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion port for ssh proxy",
+      "default": "${bastionhost.bastion_port}",
+      "label": "Bastion port",
+      "secured": false,
+      "required": false
+    },
+    {
+      "name": "bastion_user",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion user for ssh proxy",
+      "default": "${bastionhost.bastion_user}",
+      "label": "Bastion user",
+      "secured": false,
+      "required": false
+    },
+    {
+      "name": "bastion_private_key",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion private key for ssh proxy",
+      "default": "${bastionhost.bastion_private_key}",
+      "label": "Bastion private key",
+      "secured": true,
+      "required": false
+    },
+    {
+      "name": "bastion_password",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion user password for ssh proxy",
+      "default": "${bastionhost.bastion_password}",
+      "label": "Bastion user password",
+      "secured": true,
+      "required": false
+    },
+    {
+      "name": "bastion_host_key",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion host public key for ssh proxy",
+      "default": "${bastionhost.bastion_host_key}",
+      "label": "Bastion host key",
+      "secured": false,
+      "required": false
+    },     
+    {
+      "name": "ip_address",
+      "type": "string",
+      "description": "IP Address of the HOST to install the APM Agent.",
+      "hidden": false,
+      "label": "IP address",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "apm_linux"
+    },
+    {
+      "name": "user",
+      "type": "string",
+      "description": "Userid to install the APM Agent, root reccomended.",
+      "hidden": false,
+      "label": "Operating system user",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "default": "root",
+      "group_name": "apm_linux"
+    },
+    {
+      "name": "password",
+      "type": "password",
+      "description": "Password of the installation user.",
+      "hidden": false,
+      "label": "Operating system password",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "group_name": "apm_linux"
+    },
+    {
+      "name": "private_key",
+      "type": "string",
+      "description": "Private key of the installation user. This value should be base64 encoded",
+      "hidden": false,
+      "label": "Operating system private key",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "group_name": "apm_linux"
+    },
+    {
+      "name": "apm_location",
+      "type": "string",
+      "description": "Source for the APM Agent installer, eg http://IP_ADDRESS:8888/apm-agent/APMADV_Agent_Install.tar",
+      "hidden": false,
+      "label": "APM agent source location",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "apm_linux"
+    },
+    {
+      "name": "apm_method",
+      "type": "string",
+      "description": "URI type for download, http reccomended.",
+      "hidden": false,
+      "label": "APM agent URI type",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "default": "http",
+      "group_name": "apm_linux"
+    },
+    {
+      "name": "apm_source_subdir",
+      "type": "string",
+      "description": "Subdirectory within the installer where the installation files reside, eg APMADV_Agent_Install_8.1.4.0.1",
+      "hidden": false,
+      "label": "APM source subdirectory",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "default": "APMADV_Agent_Install_8.1.4.0.1",
+      "group_name": "apm_linux"
+    },
+    {
+      "name": "apm_dir",
+      "type": "string",
+      "description": "APM installation directory",
+      "hidden": false,
+      "label": "apm_dir",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "default": "/opt/ibm/apm/agent",
+      "group_name": "apm_linux"
+    },
+    {
+      "name": "apm_agents",
+      "type": "string",
+      "description": "A space separated list of agents to install. For example, os.",
+      "hidden": false,
+      "label": "APM agents list",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "default": "os",
+      "group_name": "apm_linux"
+    }
+  ]
+}

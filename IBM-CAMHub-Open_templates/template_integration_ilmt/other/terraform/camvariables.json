@@ -1,0 +1,93 @@
+{
+  "input_groups": [
+    {
+      "name": "ilmt_linux",
+      "label": "Target machine"
+    },
+    {
+      "name": "ilmt_source",
+      "label": "Installation source"
+    }
+  ],
+  "template_input_params": [
+    {
+      "name": "ip_address",
+      "type": "string",
+      "description": "IP address of the host to install the BigFix Agent.",
+      "hidden": false,
+      "label": "IP address",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ilmt_linux"
+    },
+    {
+      "name": "user",
+      "type": "string",
+      "description": "User ID to install the BigFix Agent. It must have sudo NOPASSWD set.",
+      "hidden": false,
+      "label": "Operating system user",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ilmt_linux"
+    },
+    {
+      "name": "password",
+      "type": "password",
+      "description": "Password of the installation user.",
+      "hidden": false,
+      "label": "Operating system password",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "group_name": "ilmt_linux"
+    },
+    {
+      "name": "private_key",
+      "type": "string",
+      "description": "Private key of the installation user. It must be base64 encoded.",
+      "hidden": false,
+      "label": "Operating system private key",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "group_name": "ilmt_linux"
+    },
+    {
+      "name": "sw_repo_url",
+      "type": "string",
+      "description": "Source for the BigFix Agent installer, e.g. https://IP_ADDRESS:9999/bigfix",
+      "hidden": false,
+      "label": "BigFix agent source location",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "ilmt_source"
+    },
+    {
+      "name": "bigfix_package",
+      "type": "string",
+      "description": "Name of the BigFix Agent package",
+      "hidden": false,
+      "label": "BigFix agent package name",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "default": "BESAgent-9.5.9.62-ubuntu10.amd64.deb",
+      "group_name": "ilmt_source"
+    },
+    {
+      "name": "actionsite",
+      "type": "string",
+      "description": "Name of the actionsite file",
+      "hidden": false,
+      "label": "Name of actionsite file",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "default": "actionsite.afxm",
+      "group_name": "ilmt_source"
+    }
+  ]
+}

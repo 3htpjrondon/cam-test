@@ -1,0 +1,62 @@
+{
+  "name": "Execute an Ansible Playbook on a single virtual machine - VMware vSphere",
+  "description": "This template executes an ansible playbook on a Linux virtual machine.",
+  "version": "2.0",
+  "imageUrl": "",
+  "image": "",
+  "type": "prebuilt",
+  "status": "active",
+  "manifest": {
+    "template_type": "Terraform",
+    "template_format": "HCL",
+    "template_provider": "VMware vSphere",
+    "template": {
+      "templateData": "",
+      "templateVariables": "",
+      "templateOutput": ""
+    },
+    "template_source": {
+      "githubRepoUrl": "",
+      "githubAccessToken": "",
+      "relativePathToTemplateFolder": "vmware/terraform",
+      "templateFileName": "main.tf"
+    }
+  },
+  "metadata": {
+    "providerDisplayName": "VMware vSphere",
+    "longDescription": "This template executes an ansible playbook on a Linux virtual machine.",
+    "bullets": [
+      {
+        "title": "Clouds",
+        "description": " VMware<br>"
+      },
+      {
+        "title": "Operating Systems Supported",
+        "description": "Red Hat Enterprise Linux 7<br>Ubuntu 16.04 LTS<br>"
+      },
+      {
+        "title": "Topology",
+        "description": "1 virtual machine:<br>  Ansible Binaries<br>"
+      },
+      {
+        "title": "Software Deployed",
+        "description": "Ansible Binaries<br>"
+      },
+      {
+        "title": "Default Virtual Machine Settings",
+        "description": " vCPU 2, Memory (GB) 2, Disk (GB) 25<br>"
+      },
+      {
+        "title": "Usage and Special Notes",
+        "description": "1. The user is responsible for obtaining the appropriate software licenses and downloads prior to template deployment.<br>2. Ansible Node Example Template - <a href=\"https://github.com/IBM-CAMHub-Open/template_ansible_node\" target=\"_blank\">https://github.com/IBM-CAMHub-Open/template_ansible_node</a><br>"
+      }
+    ],
+    "featuredImageUrl": "",
+    "imageUrl": "",
+    "mediumImageUrl": "",
+    "smallImageUrl": "",
+    "documentationUrl": "",
+    "termsUrl": "",
+    "media": []
+  }
+}

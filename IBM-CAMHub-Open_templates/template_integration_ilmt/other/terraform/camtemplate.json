@@ -1,0 +1,61 @@
+{
+  "name": "ILMT Integration Template",
+  "description": "This template installs the ILMT BigFix Agent and registers it with the ILMT server",
+  "version": "1.0",
+  "imageUrl": "",
+  "image": "",
+  "type": "integration",
+  "status": "active",
+  "manifest": {
+    "template_type": "Terraform",
+    "template_format": "HCL",
+    "template_provider": "Other",
+    "template": {
+      "templateData": "",
+      "templateVariables": "",
+      "templateOutput": ""
+    },
+    "template_source": {
+      "githubRepoUrl": "",
+      "githubAccessToken": "",
+      "relativePathToTemplateFolder": "other/terraform",
+      "templateFileName": "main.tf"
+    }
+  },
+  "metadata": {
+    "providerDisplayName": "Other",
+    "longDescription": "This template installs the ILMT BigFix Agent and registers it with the ILMT server",
+    "bullets": [{
+        "title": "Clouds",
+        "description": " Other<br>"
+      },
+      {
+        "title": "Operating Systems Supported",
+        "description": "N/A, This script is run on the CAM engine.<br>"
+      },
+      {
+        "title": "Topology",
+        "description": "N/A<br>"
+      },
+      {
+        "title": "Software Deployed",
+        "description": "N/A This script is run locally on the Terraform server.<br>"
+      },
+      {
+        "title": "Default Virtual Machine Settings",
+        "description": "N/A<br>"
+      },
+      {
+        "title": "Usage and Special Notes",
+        "description": "<ol class=\"list-numbering\"><li>The ILMT Integration template can be applied to ...</li><li>(todo) .</li></ol>"
+      }
+    ],
+    "featuredImageUrl": "",
+    "imageUrl": "",
+    "mediumImageUrl": "",
+    "smallImageUrl": "",
+    "documentationUrl": "",
+    "termsUrl": "",
+    "media": []
+  }
+}

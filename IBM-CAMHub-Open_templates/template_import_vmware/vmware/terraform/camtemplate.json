@@ -1,0 +1,46 @@
+{
+  "name": "Import existing VM with a single disk - VMware vSphere",
+  "description": "This template can be used to import an existing virtual machine with a single disk into IBM Cloud Automation Manager.  It can be modified to import a VM with multiple disks.",
+  "version": "1.0",
+  "imageUrl": "",
+  "image": "",
+  "type": "import",
+  "manifest": {
+    "template_type": "Terraform",
+    "template_format": "HCL",
+    "template_provider": "VMware vSphere",
+    "template": {
+      "templateData": "",
+      "templateVariables": "",
+      "templateOutput": ""
+    },
+    "template_source": {
+      "githubRepoUrl": "",
+      "githubAccessToken": "",
+      "relativePathToTemplateFolder": "vmware/terraform",
+      "templateFileName": "import.tf"
+    }
+  },
+  "metadata": {
+    "providerDisplayName": "VMware vSphere",
+    "longDescription": "This template can be used to import an existing virtual machine with a single disk into IBM Cloud Automation Manager.  It can be modified to import a VM with multiple disks.",
+    "bullets": [{
+      "title": "Clouds",
+      "description": " VMware<br>"},
+    {
+      "title": "Usage and Special Notes",
+      "description": "This template cannot be used for deploying new virtual machines."}
+    ],
+    "featuredImageUrl": "",
+    "imageUrl": "",
+    "mediumImageUrl": "",
+    "smallImageUrl": "",
+    "documentationUrl": "",
+    "termsUrl": "",
+    "media": [
+    ]
+  },
+  "toolchain": {
+    "git": "https://github.com/ibmcam/cam-toolchain"
+  }
+}

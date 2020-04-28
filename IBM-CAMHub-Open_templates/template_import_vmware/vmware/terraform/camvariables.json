@@ -1,0 +1,208 @@
+{
+  "input_datatypes": [],
+  "output_datatype": "content_template_output",
+  "input_groups": [
+    {
+      "name": "virtualmachine",
+      "label": "Virtual Machine Input Variables"
+    }
+  ],
+  "output_groups": [
+    {
+      "name": "content_template_output",
+      "label": "Outputs"
+    }
+  ],
+  "template_input_params": [
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Name of virtual machine",
+      "hidden": false,
+      "label": "Name",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "folder",
+      "type": "string",
+      "description": "Folder where the VM is located",
+      "hidden": false,
+      "label": "Folder",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "memory",
+      "type": "string",
+      "description": "Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024",
+      "hidden": false,
+      "label": "Virtual Machine Memory",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "num_cpus",
+      "type": "string",
+      "description": "Number of virtual CPU for the virtual machine, which is required to be a positive Integer",
+      "hidden": false,
+      "label": "Virtual Machine vCPUs",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "cpu_reservation",
+      "type": "string",
+      "description": "Amount of reserved CPU",
+      "hidden": false,
+      "label": "CPU reservation",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "scsi_type",
+      "type": "string",
+      "description": "SCSI interface type",
+      "hidden": true,
+      "label": "SCSI type",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "guest_id",
+      "type": "string",
+      "description": "ID of the guest operating system",
+      "hidden": true,
+      "label": "Guest operating system ID",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "network_interface_0_network_id",
+      "type": "string",
+      "description": "vSphere network ID for virtual machine's vNIC",
+      "hidden": true,
+      "label": "Virtual Machine vSphere network ID",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "network_interface_0_adapter_type",
+      "type": "string",
+      "description": "Network adapter type for vNIC Configuration",
+      "default": "vmxnet3",
+      "hidden": true,
+      "label": "vSphere Network Adapter Type",
+      "secured": false,
+      "options": [
+        {
+          "value": "vmxnet3",
+          "label": "vmxnet3",
+          "default": "true"
+        },
+        {
+          "value": "e1000",
+          "label": "e1000",
+          "default": "e1000"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "resource_pool_id",
+      "type": "string",
+      "description": "Target vSphere Resource Pool to host the virtual machine",
+      "hidden": true,
+      "label": "vSphere Resource Pool ID",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "disk_0_unit_number",
+      "type": "string",
+      "description": "Disk unit number",
+      "hidden": true,
+      "label": "Disk unit number",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "disk_0_path",
+      "type": "string",
+      "description": "",
+      "hidden": true,
+      "label": "",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "disk_0_label",
+      "type": "string",
+      "description": "",
+      "hidden": true,
+      "label": "",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "disk_0_size",
+      "type": "string",
+      "description": "",
+      "hidden": true,
+      "label": "",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "disk_0_datastore_id",
+      "type": "string",
+      "description": "",
+      "hidden": true,
+      "label": "",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "datastore_id",
+      "type": "string",
+      "description": "ID of datastore to place VM.",
+      "hidden": true,
+      "label": "Datastore ID",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    }
+  ],
+  "template_output_params": []
+}

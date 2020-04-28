@@ -1,0 +1,57 @@
+{
+    "name": "ServiceNow CMDB Configuration Template",
+    "description": "ServiceNow CMDB configuration record to add and remove CMDB records on create and delete of a server.",
+    "version": "1.0",
+    "imageUrl": "",
+    "image": "",
+    "type": "integration",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "Other",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "other/terraform",
+        "templateFileName": "main.tf"
+      }
+    },
+    "metadata": {
+      "providerDisplayName": "Other",
+      "longDescription": "ServiceNow CMDB configuration record to add and remove CMDB records on create and delete of a server. This integration template is responsible for the create of a ServiceNow CMDB record and is designed to be chained after the creation of a server. Upon deletion of a server, the template will delete the CMDB record from ServiceNow.",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " All Clouds<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "Not applicable, run locally on the Terraform Server."},
+{
+    "title": "Topology",
+    "description": "Not applicable.<br>"},
+{
+    "title": "Software Deployed",
+    "description": "Create and Remove a CMDB Record in ServiceNow.<br>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": "<ul><li>python ServiceNow module deployed on the Terraform container.</li><li>This integration script is run locally on the terraform container.</li></ul>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "<ol class=\"list-numbering\"><li>A ServiceNow instance must be available.</li><li>The ServiceNow instance must be network accessible from the Terraform container.</li><li>Upon deletion, the CMDB record is removed from ServiceNow.</li></ol>"
+}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    }
+}

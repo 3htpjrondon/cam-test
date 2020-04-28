@@ -1,0 +1,35 @@
+  {
+    "name": "com_ibm_icp_logstash",
+    "label": "ICP Logstash Service",
+    "description": "ICP Logstash Service",
+    "attributes": [
+      {
+        "name": "icp_cluster_ip",
+        "type": "string",
+        "description": "ICP Cluster IP Address",
+        "required": "false",
+        "secured": "false",
+        "label": "ICP IP Address",
+        "default": "",
+        "options": null,
+        "immutable": false,
+        "hidden": false,
+        "regex": null,
+        "range": null
+      },
+      {
+        "name": "icp_logstash_port",
+        "type": "string",
+        "description": "ICP LogStash Exposed Port Number",
+        "required": "false",
+        "secured": "false",
+        "label": "ICP LogStash Exposed Port Number",
+        "default": 30906,
+        "options": null,
+        "immutable": false,
+        "hidden": false,
+        "regex": null,
+        "range": null
+      }
+    ]
+  }

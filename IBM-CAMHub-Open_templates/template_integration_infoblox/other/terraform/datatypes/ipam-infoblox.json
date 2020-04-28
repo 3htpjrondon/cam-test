@@ -1,0 +1,68 @@
+{
+    "name": "ipam.infoblox",
+    "label": "Infoblox IPAM Server",
+    "description": "Describes an Infoblox IPAM server and a specific network the system request next available IP address.",
+    "attributes": [
+        {
+            "name": "configure_for_dns",
+            "description": "Indicates that infoblox server needs to configure the DNS server when the host record is enable.",
+            "type": "boolean",
+            "required": true,
+            "secured": false,
+            "default": false,
+            "label": "Configure DNS",
+            "hidden": false,
+            "immutable": false
+        },
+        {
+            "name": "domain",
+            "description": "The domain name to associate with the host names on the requested IP address.",
+            "type": "string",
+            "required": true,
+            "secured": false,
+            "label": "Domain Name",
+            "hidden": false,
+            "immutable": false
+        },
+        {
+            "name": "infoblox_ip_address",
+            "description": "The IP address of the Infoblox server.",
+            "type": "string",
+            "required": true,
+            "secured": false,
+            "label": "Infoblox Server IP Address",
+            "hidden": false,
+            "immutable": false
+        },
+        {
+            "name": "infoblox_user",
+            "description": "The user name to access the Infoblox server.",
+            "type": "string",
+            "required": true,
+            "secured": false,
+            "label": "Infoblox User",
+            "hidden": false,
+            "immutable": false
+        },
+        {
+            "name": "infoblox_user_password",
+            "description": "The user password to access the Infoblox server.",
+            "type": "password",
+            "required": true,
+            "secured": true,
+            "label": "Infoblox User Password",
+            "hidden": false,
+            "immutable": false
+        },
+        {
+            "name": "network",
+            "description": "The network defined in Infoblox from which to get an IP address.",
+            "type": "string",
+            "required": true,
+            "secured": false,
+            "label": "Network",
+            "hidden": false,
+            "immutable": false
+        }
+    ]
+}

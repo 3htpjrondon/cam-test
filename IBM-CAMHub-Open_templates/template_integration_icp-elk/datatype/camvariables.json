@@ -1,0 +1,190 @@
+{
+  "input_datatypes": [
+    {
+      "name": "bastionhost",
+      "label": "Bastion Data"
+    },            
+     {
+         "name": "com_ibm_icp_logstash"
+     }
+  ],
+  "input_groups": [
+    {
+      "name": "elk_agent",
+      "label": "ELK Agent Variables"
+    },
+    {
+      "name": "bastion",
+      "label": "Bastion host variables"
+    }    
+  ],
+  "template_input_params": [
+     {
+      "name": "bastion_host",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion host for ssh proxy",
+      "default": "${bastionhost.bastion_host}",
+      "label": "Bastion host",
+      "secured": false,
+      "required": false
+    },
+    {
+      "name": "bastion_port",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion port for ssh proxy",
+      "default": "${bastionhost.bastion_port}",
+      "label": "Bastion port",
+      "secured": false,
+      "required": false
+    },
+    {
+      "name": "bastion_user",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion user for ssh proxy",
+      "default": "${bastionhost.bastion_user}",
+      "label": "Bastion user",
+      "secured": false,
+      "required": false
+    },
+    {
+      "name": "bastion_private_key",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion private key for ssh proxy",
+      "default": "${bastionhost.bastion_private_key}",
+      "label": "Bastion private key",
+      "secured": true,
+      "required": false
+    },
+    {
+      "name": "bastion_password",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion user password for ssh proxy",
+      "default": "${bastionhost.bastion_password}",
+      "label": "Bastion user password",
+      "secured": true,
+      "required": false
+    },
+    {
+      "name": "bastion_host_key",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion host public key for ssh proxy",
+      "default": "${bastionhost.bastion_host_key}",
+      "label": "Bastion host key",
+      "secured": false,
+      "required": false
+    },   
+    {
+      "name": "ipv4_address",
+      "type": "string",
+      "description": "IPv4 address for vNIC configuration.",
+      "hidden": false,
+      "label": "Virtual Machine IP Address",
+      "secured": false,
+      "required": true,
+      "group_name": "elk_agent",
+      "immutable": false
+    },
+    {
+      "name": "os_admin_user",
+      "type": "string",
+      "description": "Name of the admin user account in the virtual machine that will be accessed via SSH.",
+      "hidden": false,
+      "label": "Operating System Username",
+      "secured": false,
+      "required": true,
+      "group_name": "elk_agent",
+      "immutable": false
+    },
+    {
+      "name": "os_admin_password",
+      "type": "password",
+      "description": "Operating System Password for the Operating System User to access virtual machine.",
+      "hidden": false,
+      "label": "Operating system password",
+      "secured": true,
+      "required": false,
+      "group_name": "elk_agent",
+      "immutable": false
+    },
+    {
+      "name": "os_private_ssh_key",
+      "type": "string",
+      "description": "Operating System private key for the Operating System User to access virtual machine. The key should be base64 encoded.",
+      "hidden": false,
+      "label": "Operating system private key",
+      "secured": true,
+      "required": false,
+      "group_name": "elk_agent",
+      "immutable": false
+    },
+    {
+      "name": "logstash_server_ip",
+      "type": "string",
+      "description": "Logstash server IP address.",
+      "hidden": false,
+      "label": "Logstash server IP address",
+      "secured": false,
+      "required": true,
+      "group_name": "elk_agent",
+      "immutable": false,
+      "default" : "${com_ibm_icp_logstash.icp_cluster_ip}"
+    },
+    {
+      "name": "logstash_server_port",
+      "type": "string",
+      "description": "Logstash server port.",
+      "hidden": false,
+      "label": "Logstash server port",
+      "secured": false,
+      "required": true,
+      "group_name": "elk_agent",
+      "immutable": false,
+      "default" : "${com_ibm_icp_logstash.icp_logstash_port}"
+    },
+    {
+      "name": "filebeat_source_url",
+      "type": "string",
+      "description": "HTTP URL of the filebeat installation package.",
+      "hidden": false,
+      "label": "Filebeat package location",
+      "secured": false,
+      "required": true,
+      "group_name": "elk_agent",
+      "immutable": false
+    },
+    {
+      "name": "filebeat_config_url",
+      "type": "string",
+      "description": "HTTP URL of the filebeat configuration file. One of Filebeat package location and Monitored paths needs to be specified. Example file names, filebeat-6.2.2-amd64.deb  or filebeat-6.2.2-x86_64.rpm.",
+      "hidden": false,
+      "label": "Filebeat config file location",
+      "secured": false,
+      "required": false,
+      "group_name": "elk_agent",
+      "immutable": false
+    },
+    {
+      "name": "monitored_paths",
+      "type": "list",
+      "description": "List of files and directories to monitor with logstash. One of Filebeat package location and Monitored paths needs to be specified.",
+      "hidden": false,
+      "label": "Monitored paths",
+      "secured": false,
+      "required": false,
+      "group_name": "elk_agent",
+      "immutable": false
+    }
+  ]
+}

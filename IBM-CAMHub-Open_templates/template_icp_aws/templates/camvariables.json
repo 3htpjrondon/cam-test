@@ -1,0 +1,639 @@
+{
+  "output_datatypes": [
+     {
+       "name": "com.ibm.cloud.cloudconnections.ICP",
+       "dataobject": {
+         "name": "${template_output_params.connection_name}",
+         "attributes": [
+           {
+             "name": "username",
+             "value": "${template_output_params.ICP_Admin_Username}"
+           },
+           {
+             "name": "password",
+             "value": "${template_output_params.ICP_Admin_Password}"
+           },
+           {
+             "name": "ICP_server",
+             "value": "${template_output_params.ICP_Console_ELB_DNS}"
+           }
+         ]
+       }
+     },
+     {
+       "name": "bastionhost",
+       "dataobject": {
+         "name": "${template_output_params.connection_name}BastionHost",
+         "attributes": [
+           {
+             "name": "bastion_host",
+             "value": "${template_output_params.bastion_host}"
+           },
+           {
+             "name": "bastion_user",
+             "value": "ubuntu"
+           },
+           {
+             "name": "bastion_private_key",
+             "value": "${template_input_params.privatekey}"
+           },
+           {
+             "name": "bastion_port",
+             "value": "22"
+           },
+           {
+             "name": "bastion_password",
+             "value": ""
+           },
+           {
+             "name": "bastion_host_key",
+             "value": ""
+           }           
+         ]
+       }     
+     }
+   ],
+  "input_groups": [
+    {
+      "name": "Globals",
+      "label": "Globals"
+    },
+    {
+      "name": "undefined",
+      "label": "undefined"
+    },
+    {
+      "name": "Networking",
+      "label": "Networking"
+    },
+    {
+      "name": "Instances",
+      "label": "Instances"
+    },
+    {
+      "name": "Security",
+      "label": "Security"
+    },
+    {
+      "name": "Other",
+      "label": "Other"
+    },
+    {
+      "name": "Unused",
+      "label": "Unused"
+    }
+  ],
+  "output_groups": [ ],
+  "template_input_params": [
+    {
+      "name": "aws_region",
+      "label": "AWS Region",
+      "description": "AWS region to deploy your ICP cluster nodes. For an HA installation, the AWS selected region should have at least 3 availability zones.",
+      "type": "string",
+      "options": [
+        {
+            "value": "us-east-1",
+            "label": "US East (N. Virginia)",
+            "default": true
+        },
+        {
+            "value": "us-east-2",
+            "label": "US East (Ohio)"
+        },
+        {
+            "value": "us-west-1",
+            "label": "US West (N. California)"
+        },
+        {
+            "value": "us-west-2",
+            "label": "US West (Oregon)"
+        },
+        {
+            "value": "us-gov-west-1",
+            "label": "US GovCloud Region"
+        },
+        {
+            "value": "ca-central-1",
+            "label": "Canada (Central)"
+        },
+        {
+            "value": "eu-west-1",
+            "label": "EU (Ireland)"
+        },
+        {
+            "value": "eu-central-1",
+            "label": "EU (Frankfurt)"
+        },
+        {
+            "value": "eu-west-2",
+            "label": "EU (London)"
+        },
+        {
+            "value": "ap-northeast-1",
+            "label": "Asia Pacific (Tokyo)"
+        },
+        {
+            "value": "ap-northeast-2",
+            "label": "Asia Pacific (Seoul)"
+        },
+        {
+            "value": "ap-southeast-1",
+            "label": "Asia Pacific (Singapore)"
+        },
+        {
+            "value": "ap-southeast-2",
+            "label": "Asia Pacific (Sydney)"
+        },
+        {
+            "value": "ap-south-1",
+            "label": "Asia Pacific (Mumbai)"
+        },
+        {
+            "value": "sa-east-1",
+            "label": "South America (São Paulo)"
+        }
+      ],
+      "group_name": "Globals",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "azs",
+      "label": "Availability Zones",
+      "description": "The availability zone letter identifier in the above selected region. For high availability should have at least 3 availability zones. Setting to a single availability zone will disable high availability and not provision EFS, in this case, reduce the number of master and proxy nodes to 1",
+      "type": "list",
+      "default": [
+        "a",
+        "b",
+        "c"
+      ],
+      "validation": "",
+      "group_name": "Globals",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },    
+    {
+      "name": "key_name",
+      "label": "Key Name",
+      "description": "Name of the EC2 key pair.",
+      "type": "string",
+      "group_name": "Globals",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "privatekey",
+      "label": "Private Key",
+      "description": "Base64 encoded private key file contents of the EC2 key pair.",
+      "type": "string",
+      "group_name": "Globals",
+      "required": false,
+      "secured": true,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false,
+      "regex": "(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)$",
+      "regexdesc": "Enter a valid base64 encoded text. Base64 encoded text contains alphanumeric characters and equals symbol as padding."
+    },
+    {
+      "name": "vpcname",
+      "label": "VPC Name",
+      "description": "AWS VPC Name prefix. This value is used to prefix the VPC created for ICP nodes.",
+      "type": "string",
+      "default": "icp-vpc",
+      "group_name": "Networking",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "cidr",
+      "label": "VPC CIDR block",
+      "description": "AWS VPC CIDR block. This is the primary CIDR block for your ICP node VPC.",
+      "type": "string",
+      "default": "10.10.0.0/16",
+      "group_name": "Networking",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "subnetname",
+      "label": "Subnet Name",
+      "description": "Subnet name prefix for public and private subnets used by ICP nodes.",
+      "type": "string",
+      "default": "icp-subnet",
+      "group_name": "Networking",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "subnet_cidrs",
+      "label": "Private Subnet CIDRs",
+      "description": "List of subnet CIDRs. Total number of CIDR entry must match the number of availability zone provided above. A CIDR value is used in the creation of a private subnet in an availability zone for the worker nodes.",
+      "type": "list",
+      "default": [
+        "10.10.10.0/24",
+        "10.10.11.0/24",
+        "10.10.12.0/24"
+      ],
+      "group_name": "Networking",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "pub_subnet_cidrs",
+      "label": "Public Subnet CIDRs",
+      "description": "List of subnet CIDRs. Total number of CIDR entry must match the number of availability zone provided above. A CIDR value is used in the creation of a public subnet in an availability zone for the proxy and management nodes.",
+      "type": "list",
+      "default": [
+        "10.10.20.0/24",
+        "10.10.21.0/24",
+        "10.10.22.0/24"
+      ],
+      "group_name": "Networking",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "private_domain",
+      "label": "Private Domain",
+      "description": "Private domain name that is used to create route53 name.",
+      "type": "string",
+      "default": "icp-cluster.icp",
+      "group_name": "Globals",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "ami",
+      "label": "Amazon Machine Image (AMI-ID)",
+      "description": "Default Amazon Machine Image ID that will be used if AMI ID for individual node is not provided.",
+      "type": "string",
+      "group_name": "Globals",
+      "options": [
+        {
+          "value": "ami-0f9cf087c1f27d9b1",
+          "label": "us-east-1  - Ubuntu 16.04",
+          "default": "true"
+        },
+        {
+          "value": "ami-0653e888ec96eab9b",
+          "label": "us-east-2  - Ubuntu 16.04"
+        },
+        {
+          "value": "ami-007927d10cda943c7",
+          "label": "us-west-1  - Ubuntu 16.04"
+        },
+        {
+          "value": "ami-01dd90796d1ad1ae8",
+          "label": "us-west-2  - Ubuntu 16.04"
+        }
+      ],
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "bastion",
+      "label": "Bastion Node",
+      "description": "Bastion host that you can use to ssh into ICP cluster nodes. Can be used for debugging purpose.",
+      "type": "map",
+      "default": {
+        "nodes": "1",
+        "type": "t2.micro",
+        "ami": "ami-0f9cf087c1f27d9b1",
+        "disk": "10"
+      },
+      "group_name": "Globals",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "master",
+      "label": "Master Node",
+      "description": "Master node details. Each master node will be created in a different AZS. Number of AZS, public subnet and private subnet must match the number of master node.",
+      "type": "map",
+      "default": {
+        "nodes": "3",
+        "type": "m4.2xlarge",
+        "ami": "ami-0f9cf087c1f27d9b1",
+        "disk": "300",
+        "docker_vol": "100",
+        "ebs_optimized": true
+      },
+      "group_name": "Globals",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "proxy",
+      "label": "Proxy Node",
+      "description": "Proxy node details. Each proxy node will be created in a different AZS. Number of AZS, public subnet and private subnet must match the number of proxy node.",
+      "type": "map",
+      "default": {
+        "nodes": "3",
+        "type": "m4.xlarge",
+        "ami": "ami-0f9cf087c1f27d9b1",
+        "disk": "150",
+        "docker_vol": "100",
+        "ebs_optimized": true
+      },
+      "group_name": "Globals",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "management",
+      "label": "Management Node",
+      "description": "Management node details. Each management node will be created in a different AZS. Number of AZS, public subnet and private subnet must match the number of management node.",
+      "type": "map",
+      "default": {
+        "nodes": "3",
+        "type": "m4.2xlarge",
+        "ami": "ami-0f9cf087c1f27d9b1",
+        "disk": "300",
+        "docker_vol": "100",
+        "ebs_optimized": true
+      },
+      "group_name": "Globals",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "worker",
+      "label": "Worker Node",
+      "description": "Worker node details. Each worker node will be created in a different AZS. Number of AZS, public subnet and private subnet must match the number of worker node.",
+      "type": "map",
+      "default": {
+        "nodes": "3",
+        "type": "m4.2xlarge",
+        "ami": "ami-0f9cf087c1f27d9b1",
+        "disk": "150",
+        "docker_vol": "100",
+        "ebs_optimized": true
+      },
+      "group_name": "Globals",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "va",
+      "label": "Vulnerability Advisor Node",
+      "description": "Vulnerability Advisor node details. Each VA node will be created in a different AZS. Number of AZS, public subnet and private subnet must match the number of VA node.",
+      "type": "map",
+      "default": {
+        "nodes": "3",
+        "type": "m4.2xlarge",
+        "ami": "ami-0f9cf087c1f27d9b1",
+        "disk": "300",
+        "docker_vol": "100",
+        "ebs_optimized": true
+      },
+      "group_name": "Globals",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "instance_name",
+      "label": "Cluster Name",
+      "description": "ICP Cluster Name",
+      "type": "string",
+      "default": "icp",
+      "group_name": "Globals",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false,
+      "regex": "(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)",
+      "regexdesc": "Cluster name can have lower case alphabets, numbers and dash. Must start with lower case alphabet and end with alpha-numeric character. Maximum length is 63 characters."
+    },
+    {
+      "name": "icppassword",
+      "label": "ICP Password",
+      "description": "ICP user password",
+      "type": "password",
+      "group_name": "Globals",
+      "required": false,
+      "secured": true,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "docker_package_location",
+      "label": "Docker Package Location",
+      "description": "Docker package location is required when installing ICP EE on RedHat. Package is expected in AWS s3 bucket. Prefix the location string with protocol s3://. ",
+      "type": "string",
+      "group_name": "Globals",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "image_location",
+      "label": "ICP EE Image Location",
+      "description": "Image location of ICP EE. Package is expected in AWS s3 bucket. Prefix the location string with s3://.",
+      "type": "string",
+      "group_name": "Globals",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "icp_inception_image",
+      "label": "ICP Inception Image",
+      "description": "Name of the bootstrap installation image.",
+      "type": "string",
+      "default": "ibmcom/icp-inception-amd64:3.1.1-ee",
+      "group_name": "Globals",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    }
+  ],
+  "template_output_params": [
+    {
+      "name": "ICP_Console_ELB_DNS",
+      "label": "ICP Console ELB DNS ( Internal )",
+      "description": "ICP Console ELB DNS ( Internal )",
+      "group_name": "",
+      "secured": false,
+      "hidden": false,
+      "shortname": "",
+      "type": "string"
+    },
+    {
+      "name": "ICP_Proxy_ELB_DNS_internal",
+      "label": "ICP Proxy Elb DNS ( Internal )",
+      "description": "ICP Proxy ELB DNS ( Internal )",
+      "group_name": "",
+      "secured": false,
+      "hidden": false,
+      "shortname": "",
+      "type": "string"
+    },
+    {
+      "name": "ICP_Console_URL",
+      "label": "ICP Console URL",
+      "description": "ICP Console URL",
+      "group_name": "",
+      "secured": false,
+      "hidden": false,
+      "shortname": "",
+      "type": "url"
+    },
+    {
+      "name": "ICP_Registry_ELB_URL",
+      "label": "ICP Registry ELB URL",
+      "description": "ICP Registry ELB URL",
+      "group_name": "",
+      "secured": false,
+      "hidden": false,
+      "shortname": "",
+      "type": "url"
+    },
+    {
+      "name": "icp_klusterlet_dns",
+      "label": "Host Name for klusterlet Prometheus ingress rule",
+      "description": "Use this host name as input to the klusterlet Prometheus ingress hostname.",
+      "group_name": "",
+      "secured": false,
+      "hidden": false,
+      "shortname": "",
+      "type": "string"
+    },    
+    {
+      "name": "ICP_Kubernetes_API_URL",
+      "label": "ICP Kubernetes API URL",
+      "description": "ICP Kubernetes API URL",
+      "group_name": "",
+      "secured": false,
+      "hidden": false,
+      "shortname": "",
+      "type": "url"
+    },
+    {
+      "name": "ICP_Admin_Username",
+      "label": "ICP Admin Username",
+      "description": "ICP Admin Username",
+      "group_name": "",
+      "secured": false,
+      "hidden": false,
+      "shortname": "",
+      "type": "string"
+    },
+    {
+      "name": "ICP_Admin_Password",
+      "label": "ICP Admin Password",
+      "description": "ICP Admin Password",
+      "group_name": "",
+      "secured": true,
+      "hidden": false,
+      "shortname": "",
+      "type": "password"
+    },
+    {
+      "name": "bootmaster",
+      "label": "Bootmaster Host IP",
+      "description": "Bootmaster Host IP address",
+      "group_name": "",
+      "secured": false,
+      "hidden": false,
+      "shortname": "",
+      "type": "string"
+    },
+    {
+      "name": "vm_os_private_key",
+      "description": "Private SSH key to use while configuring the IBM Cloud Private Boot Node (base64 encoded)",
+      "type": "string",
+      "secured": false,
+      "label": "Boot Master Node User Private SSH Key (base64 encoded)",
+      "hidden": false,
+      "group_name": "",
+      "shortname": ""
+    },
+    {
+      "name": "bastion_host",
+      "label": "Bastion Host IP",
+      "description": "Bastion Host IP address.",
+      "group_name": "",
+      "secured": false,
+      "hidden": false,
+      "shortname": "",
+      "type": "string"
+    }, 
+    {
+      "name": "cluster_ca_domain",
+      "label": "Cluster CA Domain",
+      "description": "Cluster Certification Authority Domain address.",
+      "group_name": "",
+      "secured": false,
+      "hidden": false,
+      "shortname": "",
+      "type": "string"
+    },
+    {
+      "name": "connection_name",
+      "label": "ICP Cloud Connection Name",
+      "description": "ICP cloud connection name that can be used in other templates to connect to ICP cluster.",
+      "type": "string",
+      "group_name": "",
+      "default": "icp",
+      "secured": false,
+      "hidden": false
+    }        
+  ]
+}

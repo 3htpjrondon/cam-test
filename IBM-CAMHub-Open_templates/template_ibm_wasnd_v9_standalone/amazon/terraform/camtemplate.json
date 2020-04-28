@@ -1,0 +1,59 @@
+{
+    "name": "IBM WebSphere Network Deployment V9 on a single virtual machine - Amazon EC2",
+    "description": "This template deploys a standalone instance of WebSphere Application Server Network Deployment V9 on a Linux virtual machine.",
+    "version": "2.1",
+    "imageUrl": "",
+    "image": "",
+    "type": "chefcontent",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "Amazon EC2",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "amazon/terraform",
+        "templateFileName": "ibm_wasnd_v9_standalone.tf"
+      }
+    },
+    "metadata": {
+      "providerDisplayName": "Amazon EC2",
+      "longDescription": "This template deploys a standalone instance of WebSphere Application Server Network Deployment V9 on a Linux virtual machine.",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " AWS<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "<ul><li>Red Hat Enterprise Linux 7</li><li>Red Hat Enterprise Linux 6</li><li>Ubuntu 16.04 LTS</li><li>Ubuntu 14.04 LTS</li></ul>"},
+{
+    "title": "Topology",
+    "description": "<ul><li>1 virtual machine:</li><li>  IBM WebSphere Application Server Network Deployment V9 - standalone server</li></ul>"},
+{
+    "title": "Software Deployed",
+    "description": "<ul><li>IBM WebSphere Application Server Network Deployment V9</li><li>IBM SDK, Java Technology Edition 8</li></ul>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": " t2.medium, vCPU 2, Mem (GiB) 4, EBS (GB) 100<br>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "<ol class=\"list-numbering\"><li>The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.</li><li>Detailed system requirements for WAS ND 9 - <a href=\"https://www.ibm.com/software/reports/compatibility/clarity/index.html\" target=\"_blank\">https://www.ibm.com/software/reports/compatibility/clarity/index.html</a></li><li>IBM Knowledge Center for WAS ND 9 - <a href=\"https://www.ibm.com/support/knowledgecenter/en/SSAW57_9.0.0\" target=\"_blank\">https://www.ibm.com/support/knowledgecenter/en/SSAW57_9.0.0</a></li><li>IBM Support Portal - <a href=\"https://www.ibm.com/support/home/\" target=\"_blank\">https://www.ibm.com/support/home/ </a></li></ol>"}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    },
+    "toolchain": {
+      "git": "https://github.com/ibmcam/cam-toolchain"
+    }
+}

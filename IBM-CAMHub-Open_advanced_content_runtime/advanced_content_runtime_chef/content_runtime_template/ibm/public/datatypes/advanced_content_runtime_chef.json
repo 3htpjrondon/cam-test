@@ -1,0 +1,131 @@
+{
+	"name": "advanced_content_runtime_chef",
+	"label": "Advanced Content Runtime Chef",
+	"description": "Advanced Content Runtime information required by Middleware templates.",
+	"attributes": [
+		{
+			"name": "ibm_im_repo",
+			"label": "Install Manager Repository URL",
+			"description": "Install Manager Repository URL",
+			"default": "",
+			"type": "string",
+			"required": false,
+			"secured": false,
+			"hidden": false,
+			"immutable": false
+		}, {
+			"name": "ibm_im_repo_user",
+			"label": "Install Manager Repository User name",
+			"description": "Install Manager Repository User name",
+			"default": "",
+			"type": "string",
+			"required": false,
+			"secured": false,
+			"hidden": false,
+			"immutable": false
+		}, {
+			"name": "ibm_im_repo_password",
+			"label": "Password for Installation Manager",
+			"description": "Password for Installation Manager",
+			"default": "",
+			"type": "password",
+			"required": false,
+			"secured": true,
+			"hidden": false,
+			"immutable": false
+		}, {
+			"name": "ibm_pm_service",
+			"label": "Pattern Manager URL",
+			"description": "URL link for Pattern Manager REST API calls",
+			"default": "",
+			"type": "string",
+			"required": true,
+			"secured": false,
+			"hidden": false,
+			"immutable": false
+		}, {
+			"name": "ibm_pm_access_token",
+			"label": "Pattern Manager Access Passphrase",
+			"description": "Passphrase used to access the REST API calls to the Pattern Manager.",
+			"default": "",
+			"type": "password",
+			"required": true,
+			"secured": true,
+			"hidden": false,
+			"immutable": false
+		}, {
+			"name": "ibm_pm_public_ssh_key_name",
+			"label": "Key Name for Pattern Manager key set",
+			"description": "For Amazon and IBM clouds, the key must exist as a resource. For other provider types, the content is simply the name associated with the key.",
+			"default": "",
+			"type": "string",
+			"required": true,
+			"secured": false,
+			"hidden": false,
+			"immutable": false,
+			"regex": "^[-A-Za-z0-9._]{1,80}$"
+		}, {
+			"name": "ibm_pm_private_ssh_key",
+			"label": "Private Key for Pattern Manager - Base 64 encoded",
+			"description": "Private key to be used by Pattern Manager to communicate with the newly instantiated virtual machine. The key must be base64 encoded and must be associated with the public key named by the Key Name for Pattern Manager key set.",
+			"default": "",
+			"type": "string",
+			"required": true,
+			"secured": true,
+			"hidden": false,
+			"immutable": false,
+			"regex": "(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)$",
+			"regexdesc": "Value must be a base64 encoded string. Can contain A-Z, a-z, and 0-9, and padding = characters."
+		}, {
+			"name": "ibm_pm_public_ssh_key",
+			"label": "Public Key for Pattern Manager",
+			"description": "Public key to be used by Pattern Manager to communicate with the newly instantiated virtual machine. The key must match the public key named by the Key Name for Pattern Manager key set.",
+			"default": "",
+			"type": "string",
+			"required": true,
+			"secured": false,
+			"hidden": false,
+			"immutable": false
+		}, {
+			"name": "ibm_sw_repo",
+			"label": "Software Repository URL",
+			"description": "URL link for install software repository",
+			"default": "",
+			"type": "string",
+			"required": true,
+			"secured": false,
+			"hidden": false,
+			"immutable": false
+		}, {
+			"name": "ibm_sw_repo_user",
+			"label": "Software Repository User name",
+			"description": "User name to access the Software Repository.",
+			"default": "",
+			"type": "string",
+			"required": true,
+			"secured": false,
+			"hidden": false,
+			"immutable": false
+		}, {
+			"name": "ibm_sw_repo_password",
+			"label": "Password for Software Repository",
+			"description": "Password for Software Repository User. The combination of user name and password is required to access the Software Repository.",
+			"default": "",
+			"type": "password",
+			"required": true,
+			"secured": true,
+			"hidden": false,
+			"immutable": false
+		}, {
+			"name": "runtime_domain",
+			"label": "Content Runtime Domain",
+			"description": "Content Runtime Domain",
+			"type": "string",
+			"default": "",
+			"required": false,
+			"secured": false,
+			"hidden": false,
+			"immutable": false
+		}
+	]
+}

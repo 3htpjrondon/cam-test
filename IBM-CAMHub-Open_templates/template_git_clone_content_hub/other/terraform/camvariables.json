@@ -1,0 +1,55 @@
+{
+  "input_datatypes": [
+  ],
+  "output_datatype": "content_template_output",
+  "input_groups": [
+    {
+      "name": "content_template_input",
+      "label": "Virtual Machine"
+    }
+  ],
+  "output_groups": [
+    {
+      "name": "content_template_output",
+      "label": "Outputs"
+    }
+  ],
+  "template_input_params": [
+    {
+      "name": "ip_address",
+      "label": "IP Address of Virtual Machine",
+      "description": "IP address of the virtual machine to clone repositories to",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
+      "group_name": "content_template_input"
+    },
+    {
+      "name": "user",
+      "label": "User Name",
+      "description": "User name to access the virtual machine",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "content_template_input"
+    },
+    {
+      "name": "user_password",
+      "label": "User Password",
+      "description": "User password to access the virtual machine",
+      "type": "string",
+      "hidden": false,
+      "secured": true,
+      "required": true,
+      "immutable": false,
+      "group_name": "content_template_input"
+    }
+  ],
+  "template_output_params": [
+  ]
+}

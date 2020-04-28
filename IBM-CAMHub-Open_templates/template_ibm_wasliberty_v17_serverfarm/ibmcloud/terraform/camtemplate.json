@@ -1,0 +1,59 @@
+{
+    "name": "IBM WebSphere Application Server Liberty server farm - IBM",
+    "description": "This template deploys a server farm topology of WebSphere Application Server Liberty on 2 Linux virtual machines.",
+    "version": "2.1",
+    "imageUrl": "",
+    "image": "",
+    "type": "chefcontent",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "IBM",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "ibmcloud/terraform",
+        "templateFileName": "ibm_wasliberty_v17_serverfarm.tf"
+      }
+    },
+    "metadata": {
+      "providerDisplayName": "IBM",
+      "longDescription": "This template deploys a server farm topology of WebSphere Application Server Liberty on 2 Linux virtual machines.",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " IBM<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "<ul><li>Red Hat Enterprise Linux 7</li><li>Red Hat Enterprise Linux 6</li><li>Ubuntu 16.04 LTS</li><li>Ubuntu 14.04 LTS</li></ul>"},
+{
+    "title": "Topology",
+    "description": "<ol class=\"list-numbering\"><li>Liberty server - Central Node</li><li>Liberty server - Application Node</li></ol>"},
+{
+    "title": "Software Deployed",
+    "description": "IBM WebSphere Application Server Liberty<br>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": " Cores 2, RAM (GB) 4, SAN Disk (GB) 100<br>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "<ol class=\"list-numbering\"><li>The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.</li><li>Installation is via Installation Manager, please ensure this has been correctly installed on the repo server.</li><li>Modify the libertynode_was_liberty_edition variable in CAM variables to change the installation type to base, core or nd.</li><li>The plugin is generated on all nodes and merged on the Central node.</li><li>IBM Knowledge Center for WAS Liberty - <a href=\"https://www.ibm.com/support/knowledgecenter/en/SSEQTP_liberty/as_ditamaps/was900_welcome_liberty.html\" target=\"_blank\">https://www.ibm.com/support/knowledgecenter/en/SSEQTP_liberty/as_ditamaps/was900_welcome_liberty.html</a></li><li>IBM Support Portal - <a href=\"https://www.ibm.com/support/home/\" target=\"_blank\">https://www.ibm.com/support/home/</a></li></ol>"}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    },
+    "toolchain": {
+      "git": "https://github.com/ibmcam/cam-toolchain"
+    }
+}

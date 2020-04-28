@@ -1,0 +1,65 @@
+{
+  "template_input_params": [
+    {
+      "name": "cmdb_user",
+      "type": "string",
+      "description": "ServiceNow Administrative user.",
+      "hidden": false,
+      "label": "cmdb_user",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cmdb"
+    },
+    {
+      "name": "cmdb_pass",
+      "type": "password",
+      "description": "ServiceNow Administrative Password.",
+      "hidden": false,
+      "label": "cmdb_pass",
+      "secured": true,
+      "required": true,
+      "immutable": false,
+      "default": "root",
+      "group_name": "cmdb"
+    },
+    {
+      "name": "cmdb_instance",
+      "type": "string",
+      "description": "ServiceNow Instance name.",
+      "hidden": false,
+      "label": "cmdb_instance",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cmdb"
+    },
+    {
+      "name": "cmdb_key",
+      "type": "string",
+      "description": "CMDB Unique Record Key, maps to the name field.",
+      "hidden": false,
+      "label": "cmdb_key",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cmdb"
+    },
+    {
+      "name": "cmdb_record",
+      "type": "map",
+      "description": "CMDB JSON Record. The name field must match the cmdb_key field above. Add or remove fields as neccessary.",
+      "hidden": false,
+      "label": "cmdb_record",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "default": {
+        "name": "server1",
+        "description": "server description",
+        "hostname": "server1"
+      },
+      "group_name": "cmdb"
+    }
+  ]
+}

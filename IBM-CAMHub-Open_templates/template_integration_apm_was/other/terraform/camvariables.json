@@ -1,0 +1,193 @@
+{
+  "input_datatypes": [
+    {
+      "name": "bastionhost",
+      "label": "Bastion Data"
+    }
+  ], 
+  "template_input_params": [
+    {
+      "name": "bastion_host",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion host for ssh proxy",
+      "default": "${bastionhost.bastion_host}",
+      "label": "Bastion host",
+      "secured": false,
+      "required": false
+    },
+    {
+      "name": "bastion_port",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion port for ssh proxy",
+      "default": "${bastionhost.bastion_port}",
+      "label": "Bastion port",
+      "secured": false,
+      "required": false
+    },
+    {
+      "name": "bastion_user",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion user for ssh proxy",
+      "default": "${bastionhost.bastion_user}",
+      "label": "Bastion user",
+      "secured": false,
+      "required": false
+    },
+    {
+      "name": "bastion_private_key",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion private key for ssh proxy",
+      "default": "${bastionhost.bastion_private_key}",
+      "label": "Bastion private key",
+      "secured": true,
+      "required": false
+    },
+    {
+      "name": "bastion_password",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion user password for ssh proxy",
+      "default": "${bastionhost.bastion_password}",
+      "label": "Bastion user password",
+      "secured": true,
+      "required": false
+    },
+    {
+      "name": "bastion_host_key",
+      "type": "string",
+      "group_name": "bastion",
+      "hidden": true,
+      "description": "Bastion host public key for ssh proxy",
+      "default": "${bastionhost.bastion_host_key}",
+      "label": "Bastion host key",
+      "secured": false,
+      "required": false
+    },   
+    {
+      "name": "ip_address",
+      "type": "string",
+      "description": "IP Address of the HOST to install the APM Agent.",
+      "hidden": false,
+      "label": "IP address",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "apm_linux"
+    },
+    {
+      "name": "user",
+      "type": "string",
+      "description": "Userid to install the APM Agent, root reccomended.",
+      "hidden": false,
+      "label": "Operating system user",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "default": "root",
+      "group_name": "apm_was"
+    },
+    {
+      "name": "password",
+      "type": "password",
+      "description": "Password of the installation user",
+      "hidden": false,
+      "label": "Operating system password",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "group_name": "apm_was"
+    },
+    {
+      "name": "private_key",
+      "type": "string",
+      "description": "Private key of the installation user. This value should be base64 encoded.",
+      "hidden": false,
+      "label": "Operating system private key",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "group_name": "apm_was"
+    },
+    {
+      "name": "was_profile",
+      "type": "string",
+      "description": "Default WebSphere Profile Name.",
+      "hidden": false,
+      "label": "Websphere profile name",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "default": "AppSrv01",
+      "group_name": "apm_was"
+    },
+    {
+      "name": "was_home",
+      "type": "string",
+      "description": "Base directory for the WebSphere Installation.",
+      "hidden": false,
+      "label": "WebSphere base directory",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "default": "/opt/IBM/WebSphere/AppServer",
+      "group_name": "apm_was"
+    },
+    {
+      "name": "was_cell",
+      "type": "string",
+      "description": "WebSphere Cell Name.",
+      "hidden": false,
+      "label": "WebSphere cell",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "default": "was_cell",
+      "group_name": "apm_was"
+    },
+    {
+      "name": "was_node",
+      "type": "string",
+      "description": "WebSphere Node Name.",
+      "hidden": false,
+      "label": "WebSphere node name",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "default": "node01",
+      "group_name": "apm_was"
+    },
+    {
+      "name": "was_user",
+      "type": "string",
+      "description": "Websphere run_as user.",
+      "hidden": false,
+      "label": "WebSphere run_as user",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "default": "wasadmin",
+      "group_name": "apm_was"
+    },
+    {
+      "name": "apm_dir",
+      "type": "string",
+      "description": "Base directory for APM",
+      "hidden": false,
+      "label": "APM base directory",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "default": "/opt/ibm/apm",
+      "group_name": "apm_was"
+    }
+  ]
+}

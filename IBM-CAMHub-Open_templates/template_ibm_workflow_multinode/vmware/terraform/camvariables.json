@@ -1,0 +1,2941 @@
+{
+  "input_namespaces": [
+    {
+      "name": "advanced_content_runtime_chef",
+      "label": "Advanced Content Runtime"
+    }
+  ],
+  "output_datatype": "content_template_output",
+  "input_groups": [
+    {
+      "name": "cloud",
+      "label": "Cloud Input Variables"
+    },
+    {
+      "name": "ssh_keys",
+      "label": "SSH Keys"
+    },
+    {
+      "name": "environment",
+      "label": "Environment"
+    },
+    {
+      "name": "virtualmachine",
+      "label": "Virtual Machine Input Variables"
+    },
+    {
+      "name": "ihsconfiguration",
+      "label": "IBM HTTP Server Installation and Configuration"
+    },
+    {
+      "name": "installation",
+      "label": "IBM Business Automation Workflow Installation"
+    },
+    {
+      "name": "configuration",
+      "label": "IBM Business Automation Workflow Configuration"
+    },
+    {
+      "name": "db2",
+      "label": "IBM Business Automation Workflow Configuration - Db2"
+    },
+    {
+      "name": "oracle",
+      "label": "IBM Business Automation Workflow Configuration - Oracle"
+    },
+    {
+      "name": "metering",
+      "label": "IBM Business Automation Workflow Metering"
+    }
+  ],
+  "output_groups": [
+    {
+      "name": "content_template_output",
+      "label": "Outputs"
+    }
+  ],
+  "template_input_params": [
+    {
+      "name": "IHS01_datacenter",
+      "type": "string",
+      "description": "Target vSphere datacenter for virtual machine creation.",
+      "hidden": false,
+      "label": "vSphere Datacenter - IHS01",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "IHS01_cluster",
+      "type": "string",
+      "description": "Target vSphere cluster to host the virtual machine for IBM HTTP Server.",
+      "hidden": false,
+      "label": "vSphere Cluster - IHS01",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "IHS01_resource_pool",
+      "type": "string",
+      "description": "Target vSphere resource pool to host the virtual machine.",
+      "hidden": false,
+      "label": "vSphere Resource Pool - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "IHS01_folder",
+      "type": "string",
+      "description": "Target vSphere folder for the virtual machine.",
+      "hidden": false,
+      "label": "vSphere Folder Name - IHS01",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "Workflow01_datacenter",
+      "type": "string",
+      "description": "Target vSphere datacenter for virtual machine creation.",
+      "hidden": false,
+      "label": "vSphere Datacenter - Workflow01",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "Workflow01_cluster",
+      "type": "string",
+      "description": "Target vSphere cluster to host the virtual machine for Node01.",
+      "hidden": false,
+      "label": "vSphere Cluster - Workflow01",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "Workflow01_resource_pool",
+      "type": "string",
+      "description": "Target vSphere resource pool to host the virtual machine.",
+      "hidden": false,
+      "label": "vSphere Resource Pool - Workflow01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "Workflow01_folder",
+      "type": "string",
+      "description": "Target vSphere folder for the virtual machine.",
+      "hidden": false,
+      "label": "vSphere Folder Name - Workflow01",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "Workflow02_datacenter",
+      "type": "string",
+      "description": "Target vSphere datacenter for virtual machine creation.",
+      "hidden": false,
+      "label": "vSphere Datacenter - Workflow02",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "Workflow02_cluster",
+      "type": "string",
+      "description": "Target vSphere cluster to host the virtual machine for Node02.",
+      "hidden": false,
+      "label": "vSphere Cluster - Workflow02",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "Workflow02_resource_pool",
+      "type": "string",
+      "description": "Target vSphere resource pool to host the virtual machine.",
+      "hidden": false,
+      "label": "vSphere Resource Pool - Workflow02",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "Workflow02_folder",
+      "type": "string",
+      "description": "Target vSphere folder for the virtual machine.",
+      "hidden": false,
+      "label": "vSphere Folder Name - Workflow02",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "allow_unverified_ssl",
+      "type": "string",
+      "description": "Communication with the vSphere server through a self-signed certificate",
+      "default": true,
+      "hidden": true,
+      "label": "vSphere server communication through self-signed certificate",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "user_public_ssh_key",
+      "type": "string",
+      "description": "User-defined public SSH key used to connect to the virtual machine. This key must be in openSSH format.",
+      "default": "None",
+      "hidden": false,
+      "label": "User Public SSH Key - ssh_keys",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ssh_keys"
+    },
+    {
+      "name": "ibm_stack_id",
+      "type": "string",
+      "description": "A unique stack identifier.",
+      "hidden": true,
+      "label": "Stack Identifier",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "environment"
+    },
+    {
+      "name": "ibm_stack_name",
+      "type": "string",
+      "description": "A unique stack name.",
+      "hidden": true,
+      "label": "Stack Name",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "environment"
+    },
+    {
+      "name": "ibm_pm_access_token",
+      "type": "string",
+      "description": "IBM Pattern Manager Access Token",
+      "hidden": true,
+      "label": "IBM Pattern Manager Access Token",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_access_token}"
+    },
+    {
+      "name": "ibm_pm_service",
+      "type": "string",
+      "description": "IBM Pattern Manager Service",
+      "hidden": true,
+      "label": "IBM Pattern Manager Service",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_service}"
+    },
+    {
+      "name": "ibm_im_repo",
+      "type": "string",
+      "description": "URL to the IBM Installation Manager repository (https://<hostname/IP>:<port>/IMRepo)",
+      "hidden": true,
+      "label": "IBM Installation Manager Repository",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "immutable_after_create": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_im_repo}"
+    },
+    {
+      "name": "ibm_im_repo_password",
+      "type": "password",
+      "description": "Password to the IBM Installation Manager repository",
+      "hidden": true,
+      "label": "IBM Installation Manager Repository Password",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_im_repo_password}"
+    },
+    {
+      "name": "ibm_im_repo_user",
+      "type": "string",
+      "description": "User name to access the IBM Installation Manager repository",
+      "default": "${advanced_content_runtime_chef.ibm_im_repo_user}",
+      "hidden": true,
+      "label": "IBM Installation Manager Repository Username",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "immutable_after_create": true,
+      "group_name": "environment"
+    },
+    {
+      "name": "ibm_sw_repo_password",
+      "type": "password",
+      "description": "Password to the IBM software repository",
+      "hidden": true,
+      "label": "IBM Software Repository Password",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "immutable_after_create": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo_password}"
+    },
+    {
+      "name": "ibm_sw_repo",
+      "type": "string",
+      "description": "Root level of the IBM software repository (https://<hostname>:<port>)",
+      "hidden": true,
+      "label": "IBM Software Repository Root",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "immutable_after_create": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo}"
+    },
+    {
+      "name": "ibm_sw_repo_user",
+      "type": "string",
+      "description": "User name to access the IBM software repository",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo_user}",
+      "hidden": true,
+      "label": "IBM Software Repository Username",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "immutable_after_create": true,
+      "group_name": "environment"
+    },
+    {
+      "name": "ibm_pm_private_ssh_key",
+      "type": "string",
+      "description": "The private, base64-encoded CAMC SSH key that is used to connect to the virtual guest.",
+      "hidden": true,
+      "label": "Private CAMC SSH key for connection to the virtual guest",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_private_ssh_key}"
+    },
+    {
+      "name": "ibm_pm_public_ssh_key",
+      "type": "string",
+      "description": "Public CAMC SSH key value that is used to connect to a guest. Used on VMware only.",
+      "hidden": true,
+      "label": "Public CAMC SSH key value for connection to a guest on VMware",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_public_ssh_key}"
+    },
+    {
+      "name": "IHS01_ipv4_address",
+      "type": "string",
+      "description": "IPv4 address for the vNIC configuration.",
+      "hidden": false,
+      "label": "Virtual Machine IP Address - IHS01",
+      "secured": false,
+      "required": true,
+      "regex": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01-name",
+      "type": "string",
+      "description": "Short hostname of virtual machine.",
+      "hidden": false,
+      "label": "Short Hostname - IHS01",
+      "secured": false,
+      "required": true,
+      "regex": "^(?![0-9]+$)([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9])$",
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01_domain",
+      "type": "string",
+      "description": "Domain name of the virtual machine.",
+      "hidden": false,
+      "label": "Domain Name - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01_dns_servers",
+      "type": "list",
+      "description": "Domain name servers for the virtual network adapter for IBM HTTP Server.",
+      "hidden": false,
+      "label": "DNS Servers - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01_dns_suffixes",
+      "type": "list",
+      "description": "Name resolution suffixes for the virtual network adapter.",
+      "hidden": false,
+      "label": "DNS Suffixes - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01_ipv4_gateway",
+      "type": "string",
+      "description": "IPv4 gateway for the vNIC configuration.",
+      "hidden": false,
+      "label": "Virtual Machine Gateway Address - IHS01",
+      "secured": false,
+      "required": true,
+      "regex": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01_ipv4_prefix_length",
+      "type": "string",
+      "description": "IPv4 prefix length for the vNIC configuration.",
+      "hidden": false,
+      "default": "24",
+      "label": "Virtual Machine Netmask Prefix - IHS01",
+      "secured": false,
+      "required": true,
+      "regex": "^([0-9]|[1-2][0-9]|3[0-2])$",
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01_network_interface_label",
+      "type": "string",
+      "description": "vSphere port group or network label for the virtual machine's vNIC.",
+      "hidden": false,
+      "label": "Virtual Machine vSphere Port Group - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01_adapter_type",
+      "type": "string",
+      "description": "Network adapter type for the vNIC configuration.",
+      "default": "vmxnet3",
+      "hidden": false,
+      "label": "vSphere Network Adapter Type - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01-image",
+      "type": "string",
+      "description": "Identifier of the operating system image or template that you use to create the virtual image. The template must be a plain Ubuntu operating system, with no additional software, such as Db2, already installed or configured.",
+      "hidden": false,
+      "label": "Operating System ID / Template - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01-os_admin_user",
+      "type": "string",
+      "description": "Name of the administrator account in the virtual machine that will be accessed via SSH.",
+      "hidden": false,
+      "label": "Operating System Username - IHS01",
+      "secured": false,
+      "required": true,
+      "regex": "^[a-z][-a-z0-9]*$",
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01-os_password",
+      "type": "password",
+      "description": "Password for the operating system to access the virtual machine.",
+      "hidden": false,
+      "label": "Operating System Password - IHS01",
+      "secured": true,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01_memory",
+      "type": "string",
+      "description": "The amount of memory allocated to the virtual machine, in megabytes.",
+      "default": 16384,
+      "hidden": false,
+      "label": "Virtual Machine Memory - IHS01",
+      "secured": false,
+      "required": true,
+      "options": [
+        {
+          "value": "6144",
+          "label": "6GB"
+        },
+        {
+          "value": "8192",
+          "label": "8GB"
+        },
+        {
+          "value": "16384",
+          "label": "16GB",
+          "default": "true"
+        },
+        {
+          "value": "24576",
+          "label": "24GB"
+        },
+        {
+          "value": "32768",
+          "label": "32GB"
+        },
+        {
+          "value": "65536",
+          "label": "64GB"
+        },
+        {
+          "value": "131072",
+          "label": "128GB"
+        },
+        {
+          "value": "262144",
+          "label": "256GB"
+        }
+      ],
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01_number_of_vcpu",
+      "type": "string",
+      "description": "The number of virtual CPUs for the virtual machine. This number must be a positive integer.",
+      "default": 4,
+      "hidden": false,
+      "label": "Virtual Machine vCPUs - IHS01",
+      "secured": false,
+      "required": true,
+      "options": [
+        {
+          "value": "4",
+          "label": "4",
+          "default": "true"
+        },
+        {
+          "value": "8",
+          "label": "8"
+        },
+        {
+          "value": "16",
+          "label": "16"
+        },
+        {
+          "value": "32",
+          "label": "32"
+        }
+      ],
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01_root_disk_thin_provisioned",
+      "type": "string",
+      "description": "The template disk volume is thin_provisioned.",
+      "default": "true",
+      "hidden": false,
+      "label": "Disk, thin_provisioned - IHS01",
+      "secured": false,
+      "required": true,
+      "options": [
+        {
+          "value": "true",
+          "label": "true",
+          "default": "true"
+        },
+        {
+          "value": "false",
+          "label": "false"
+        }
+      ],
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01_root_disk_size",
+      "type": "string",
+      "description": "Size of template disk volume. This size should be equal to the template disk size.",
+      "default": "100",
+      "hidden": false,
+      "label": "Root Disk Size - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01_root_disk_datastore",
+      "type": "string",
+      "description": "Name of the data storage cluster on the VM target disk.",
+      "hidden": false,
+      "label": "Template Disk Datastore - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01_root_disk_keep_on_remove",
+      "type": "string",
+      "description": "Deletes the template disk when the virtual machine is deleted.",
+      "default": "false",
+      "hidden": true,
+      "label": "Delete template disk on virtual machine deletion - IHS01",
+      "secured": false,
+      "options": [
+        {
+          "value": "false",
+          "label": "False",
+          "default": "true"
+        },
+        {
+          "value": "true",
+          "label": "True"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHS01_ihs_version",
+      "type": "string",
+      "description": "The version of IBM HTTP Server to install.",
+      "default": "8.5.5.14",
+      "hidden": false,
+      "label": "IBM HTTP Server Installation Version - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_ihs_os_user_name",
+      "type": "string",
+      "description": "The user identifier for the operating system that will be used to install the product. The identifier is created if it does not exist.",
+      "default": "ihsuser01",
+      "hidden": false,
+      "label": "IBM HTTP Server Installation User Identifier - IHS01",
+      "secured": false,
+      "required": true,
+      "regex": "^[a-z][-a-z0-9]*$",
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_ihs_os_user_shell",
+      "type": "string",
+      "description": "Shell that the operating system user uses for product installation",
+      "default": "/bin/bash",
+      "hidden": true,
+      "label": "Shell for the operating system user",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_install_mode",
+      "type": "string",
+      "description": "The installation mode for IBM HTTP Server",
+      "default": "nonAdmin",
+      "hidden": true,
+      "label": "IBM HTTP Server Installation Mode",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "options": [
+        {
+          "value": "admin",
+          "label": "admin"
+        },
+        {
+          "value": "nonAdmin",
+          "label": "nonAdmin",
+          "default": "true"
+        }
+      ],
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_ihs_os_user_ldap_user",
+      "type": "string",
+      "description": "A flag that indicates whether to create the WebSphere user locally or to use an LDAP-based user",
+      "default": "false",
+      "hidden": true,
+      "label": "WebSphere to use LDAP for authentication - IHS01",
+      "secured": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "true"
+        },
+        {
+          "value": "false",
+          "label": "false",
+          "default": true
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_ihs_os_user_comment",
+      "type": "string",
+      "description": "Comments that you can add when you create the user identifier",
+      "default": "IHS administrator",
+      "hidden": true,
+      "label": "IHS comment - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_ihs_os_user_gid",
+      "type": "string",
+      "description": "The operating system group name that will be assigned to the product installation.",
+      "default": "ihsgroup",
+      "hidden": false,
+      "label": "IBM HTTP Server User Group Name - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_ihs_admin_server_enabled",
+      "type": "string",
+      "description": "IBM HTTP Server Admin Server Enable(true/false)",
+      "default": "true",
+      "hidden": true,
+      "label": "IBM HTTP Server Admin Server Enabled - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_ihs_admin_server_port",
+      "type": "string",
+      "description": "IBM HTTP Server Admin Server Port Number",
+      "default": "8008",
+      "hidden": true,
+      "label": "IBM HTTP Server Admin Server Port - IHS01",
+      "secured": false,
+      "required": true,
+      "regex": "^([1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]{1}|6553[0-5])$",
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_ihs_admin_server_username",
+      "type": "string",
+      "description": "Name of the IBM HTTP Server administration server user.",
+      "default": "ihsadmin",
+      "hidden": false,
+      "label": "IBM HTTP Server Admin Server Username - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_ihs_admin_server_password",
+      "type": "password",
+      "description": "Password for the IBM HTTP Server administration server user.",
+      "hidden": false,
+      "label": "IBM HTTP Server Admin Server Password - IHS01",
+      "secured": true,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_ihs_plugin_enabled",
+      "type": "string",
+      "description": "IBM HTTP Server Plugin Enabled",
+      "default": "true",
+      "hidden": true,
+      "label": "IBM HTTP Server Plugin Enabled - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_ihs_plugin_was_webserver_name",
+      "type": "string",
+      "description": "IBM HTTP Server Plugin Hostname, normally the FQDN",
+      "default": "webserver1",
+      "hidden": true,
+      "label": "IBM HTTP Server Plugin Hostname - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_ihs_plugin_install_dir",
+      "type": "string",
+      "description": "IBM HTTP Server Plugin Installation Direcrtory",
+      "default": "/home/ihsuser01/IBM/WebSphere/Plugins",
+      "hidden": true,
+      "label": "IBM HTTP Server Plugin Installation Directory - IHS01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_ihs_port",
+      "type": "string",
+      "description": "The IBM HTTP Server default port for HTTP requests",
+      "default": "8080",
+      "hidden": true,
+      "label": "IBM HTTP Server Port - IHS01",
+      "secured": false,
+      "required": true,
+      "regex": "^([1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]{1}|6553[0-5])$",
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_ihs_https_port",
+      "type": "string",
+      "description": "The IBM HTTPS Server default port for HTTPS requests. For non-root users, the port number must be larger than 1024.",
+      "default": "8443",
+      "hidden": false,
+      "label": "IBM HTTPS Server Port - IHS01",
+      "secured": false,
+      "required": true,
+      "regex": "^([1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]{1}|6553[0-5])$",
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "IHS01_ihs_keystore_password",
+      "type": "password",
+      "description": "The keystore password.",
+      "hidden": false,
+      "label": "Keystore Password",
+      "secured": true,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "ihsconfiguration"
+    },
+    {
+      "name": "Workflow01_ipv4_address",
+      "type": "string",
+      "description": "IPv4 address for the vNIC configuration.",
+      "hidden": false,
+      "label": "Virtual Machine IP Address - Workflow01",
+      "secured": false,
+      "required": true,
+      "regex": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01-name",
+      "type": "string",
+      "description": "Short hostname of virtual machine.",
+      "hidden": false,
+      "label": "Short Hostname - Workflow01",
+      "secured": false,
+      "required": true,
+      "regex": "^(?![0-9]+$)([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9])$",
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01_domain",
+      "type": "string",
+      "description": "Domain name of the virtual machine.",
+      "hidden": false,
+      "label": "Domain Name - Workflow01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01_dns_servers",
+      "type": "list",
+      "description": "Domain name servers for the virtual network adapter for Node01.",
+      "hidden": false,
+      "label": "DNS Servers - Workflow01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01_dns_suffixes",
+      "type": "list",
+      "description": "Name resolution suffixes for the virtual network adapter.",
+      "hidden": false,
+      "label": "DNS Suffixes - Workflow01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01_ipv4_gateway",
+      "type": "string",
+      "description": "IPv4 gateway for the vNIC configuration.",
+      "hidden": false,
+      "label": "Virtual Machine Gateway Address - Workflow01",
+      "secured": false,
+      "required": true,
+      "regex": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01_ipv4_prefix_length",
+      "type": "string",
+      "description": "IPv4 prefix length for the vNIC configuration.",
+      "hidden": false,
+      "default": "24",
+      "label": "Virtual Machine Netmask Prefix - Workflow01",
+      "secured": false,
+      "required": true,
+      "regex": "^([0-9]|[1-2][0-9]|3[0-2])$",
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01_network_interface_label",
+      "type": "string",
+      "description": "vSphere port group or network label for the virtual machine's vNIC.",
+      "hidden": false,
+      "label": "Virtual Machine vSphere Port Group - Workflow01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01_adapter_type",
+      "type": "string",
+      "description": "Network adapter type for the vNIC configuration.",
+      "default": "vmxnet3",
+      "hidden": false,
+      "label": "vSphere Network Adapter Type - Workflow01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01-image",
+      "type": "string",
+      "description": "Identifier of the operating system image or template that you use to create the virtual image.  The template must be a plain Ubuntu operating system, with no additional software, such as Db2, already installed or configured.",
+      "hidden": false,
+      "label": "Operating System ID / Template - Workflow01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01-os_admin_user",
+      "type": "string",
+      "description": "Name of the administrator account in the virtual machine that will be accessed via SSH.",
+      "hidden": false,
+      "label": "Operating System Username - Workflow01",
+      "secured": false,
+      "required": true,
+      "regex": "^[a-z][-a-z0-9]*$",
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01-os_password",
+      "type": "password",
+      "description": "Password for the operating system to access the virtual machine.",
+      "hidden": false,
+      "label": "Operating System Password - Workflow01",
+      "secured": true,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01_memory",
+      "type": "string",
+      "description": "The amount of memory allocated to the virtual machine, in megabytes.",
+      "default": 16384,
+      "hidden": false,
+      "label": "Virtual Machine Memory - Workflow01",
+      "secured": false,
+      "required": true,
+      "options": [
+        {
+          "value": "6144",
+          "label": "6GB"
+        },
+        {
+          "value": "8192",
+          "label": "8GB"
+        },
+        {
+          "value": "16384",
+          "label": "16GB",
+          "default": "true"
+        },
+        {
+          "value": "24576",
+          "label": "24GB"
+        },
+        {
+          "value": "32768",
+          "label": "32GB"
+        },
+        {
+          "value": "65536",
+          "label": "64GB"
+        },
+        {
+          "value": "131072",
+          "label": "128GB"
+        },
+        {
+          "value": "262144",
+          "label": "256GB"
+        }
+      ],
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01_number_of_vcpu",
+      "type": "string",
+      "description": "The number of virtual CPUs for the virtual machine. This number must be a positive integer.",
+      "default": 4,
+      "hidden": false,
+      "label": "Virtual Machine vCPUs - Workflow01",
+      "secured": false,
+      "required": true,
+      "options": [
+        {
+          "value": "4",
+          "label": "4",
+          "default": "true"
+        },
+        {
+          "value": "8",
+          "label": "8"
+        },
+        {
+          "value": "16",
+          "label": "16"
+        },
+        {
+          "value": "32",
+          "label": "32"
+        }
+      ],
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01_root_disk_thin_provisioned",
+      "type": "string",
+      "description": "The template disk volume is thin_provisioned.",
+      "default": "true",
+      "hidden": false,
+      "label": "Disk, thin_provisioned - Workflow01",
+      "secured": false,
+      "required": true,
+      "options": [
+        {
+          "value": "true",
+          "label": "true",
+          "default": "true"
+        },
+        {
+          "value": "false",
+          "label": "false"
+        }
+      ],
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01_root_disk_size",
+      "type": "string",
+      "description": "Size of template disk volume. This size should be equal to the template disk size.",
+      "default": "100",
+      "hidden": false,
+      "label": "Root Disk Size - Workflow01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01_root_disk_datastore",
+      "type": "string",
+      "description": "Name of the data storage cluster on the VM target disk.",
+      "hidden": false,
+      "label": "Template Disk Datastore - Workflow01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01_root_disk_keep_on_remove",
+      "type": "string",
+      "description": "Deletes the template disk when the virtual machine is deleted.",
+      "default": "false",
+      "hidden": true,
+      "label": "Delete template disk on virtual machine deletion - Workflow01",
+      "secured": false,
+      "options": [
+        {
+          "value": "false",
+          "label": "False",
+          "default": "true"
+        },
+        {
+          "value": "true",
+          "label": "True"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow01_baw_os_user_name",
+      "type": "string",
+      "description": "The user identifier for the operating system that will be used to install the product. The identifier is created if it does not exist.",
+      "default": "workflowuser01",
+      "hidden": false,
+      "label": "Workflow Installation User Identifier - Workflow01",
+      "secured": false,
+      "required": true,
+      "regex": "^[a-z][-a-z0-9]*$",
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow01_baw_os_user_shell",
+      "type": "string",
+      "description": "Shell that the operating system user uses for product installation",
+      "default": "/bin/bash",
+      "hidden": true,
+      "label": "Shell for the operating system user",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow01_install_mode",
+      "type": "string",
+      "description": "The installation mode for IBM Business Automation Workflow",
+      "default": "nonAdmin",
+      "hidden": true,
+      "label": "IBM Business Automation Workflow Installation Mode",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "options": [
+        {
+          "value": "admin",
+          "label": "admin"
+        },
+        {
+          "value": "nonAdmin",
+          "label": "nonAdmin",
+          "default": "true"
+        }
+      ],
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow01_baw_os_user_ldap_user",
+      "type": "string",
+      "description": "A flag that indicates whether to create the WebSphere user locally or to use an LDAP-based user",
+      "default": "false",
+      "hidden": true,
+      "label": "WebSphere to use LDAP for authentication - Workflow01",
+      "secured": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "true"
+        },
+        {
+          "value": "false",
+          "label": "false",
+          "default": true
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow01_baw_os_user_comment",
+      "type": "string",
+      "description": "Comments that you can add when you create the user identifier",
+      "default": "Workflow administrator",
+      "hidden": true,
+      "label": "Workflow comment - Workflow01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow01_baw_os_user_gid",
+      "type": "string",
+      "description": "The operating system group name that will be assigned to the product installation.",
+      "default": "workflowgroup",
+      "hidden": false,
+      "label": "Workflow User Group Name - Workflow01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow02_ipv4_address",
+      "type": "string",
+      "description": "IPv4 address for the vNIC configuration.",
+      "hidden": false,
+      "label": "Virtual Machine IP Address - Workflow02",
+      "secured": false,
+      "required": true,
+      "regex": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02-name",
+      "type": "string",
+      "description": "Short hostname of virtual machine.",
+      "hidden": false,
+      "label": "Short Hostname - Workflow02",
+      "secured": false,
+      "required": true,
+      "regex": "^(?![0-9]+$)([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9])$",
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02_domain",
+      "type": "string",
+      "description": "Domain name of the virtual machine.",
+      "hidden": false,
+      "label": "Domain Name - Workflow02",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02_dns_servers",
+      "type": "list",
+      "description": "Domain name servers for the virtual network adapter for Node02.",
+      "hidden": false,
+      "label": "DNS Servers - Workflow02",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02_dns_suffixes",
+      "type": "list",
+      "description": "Name resolution suffixes for the virtual network adapter.",
+      "hidden": false,
+      "label": "DNS Suffixes - Workflow02",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02_ipv4_gateway",
+      "type": "string",
+      "description": "IPv4 gateway for the vNIC configuration.",
+      "hidden": false,
+      "label": "Virtual Machine Gateway Address - Workflow02",
+      "secured": false,
+      "required": true,
+      "regex": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02_ipv4_prefix_length",
+      "type": "string",
+      "description": "IPv4 prefix length for the vNIC configuration.",
+      "hidden": false,
+      "default": "24",
+      "label": "Virtual Machine Netmask Prefix - Workflow02",
+      "secured": false,
+      "required": true,
+      "regex": "^([0-9]|[1-2][0-9]|3[0-2])$",
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02_network_interface_label",
+      "type": "string",
+      "description": "vSphere port group or network label for the virtual machine's vNIC.",
+      "hidden": false,
+      "label": "Virtual Machine vSphere Port Group - Workflow02",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02_adapter_type",
+      "type": "string",
+      "description": "Network adapter type for the vNIC configuration.",
+      "default": "vmxnet3",
+      "hidden": false,
+      "label": "vSphere Network Adapter Type - Workflow02",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02-image",
+      "type": "string",
+      "description": "Identifier of the operating system image or template that you use to create the virtual image. The template must be a plain Ubuntu operating system, with no additional software, such as Db2, already installed or configured.",
+      "hidden": false,
+      "label": "Operating System ID / Template - Workflow02",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02-os_admin_user",
+      "type": "string",
+      "description": "Name of the administrator account in the virtual machine that will be accessed via SSH.",
+      "hidden": false,
+      "label": "Operating System Username - Workflow02",
+      "secured": false,
+      "required": true,
+      "regex": "^[a-z][-a-z0-9]*$",
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02-os_password",
+      "type": "password",
+      "description": "Password for the operating system to access the virtual machine.",
+      "hidden": false,
+      "label": "Operating System Password - Workflow02",
+      "secured": true,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02_memory",
+      "type": "string",
+      "description": "The amount of memory allocated to the virtual machine, in megabytes.",
+      "default": 16384,
+      "hidden": false,
+      "label": "Virtual Machine Memory - Workflow02",
+      "secured": false,
+      "required": true,
+      "options": [
+        {
+          "value": "6144",
+          "label": "6GB"
+        },
+        {
+          "value": "8192",
+          "label": "8GB"
+        },
+        {
+          "value": "16384",
+          "label": "16GB",
+          "default": "true"
+        },
+        {
+          "value": "24576",
+          "label": "24GB"
+        },
+        {
+          "value": "32768",
+          "label": "32GB"
+        },
+        {
+          "value": "65536",
+          "label": "64GB"
+        },
+        {
+          "value": "131072",
+          "label": "128GB"
+        },
+        {
+          "value": "262144",
+          "label": "256GB"
+        }
+      ],
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02_number_of_vcpu",
+      "type": "string",
+      "description": "The number of virtual CPUs for the virtual machine. This number must be a positive integer.",
+      "default": 4,
+      "hidden": false,
+      "label": "Virtual Machine vCPUs - Workflow02",
+      "secured": false,
+      "required": true,
+      "options": [
+        {
+          "value": "4",
+          "label": "4",
+          "default": "true"
+        },
+        {
+          "value": "8",
+          "label": "8"
+        },
+        {
+          "value": "16",
+          "label": "16"
+        },
+        {
+          "value": "32",
+          "label": "32"
+        }
+      ],
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02_root_disk_thin_provisioned",
+      "type": "string",
+      "description": "The template disk volume is thin_provisioned.",
+      "default": "true",
+      "hidden": false,
+      "label": "Disk, thin_provisioned - Workflow02",
+      "secured": false,
+      "required": true,
+      "options": [
+        {
+          "value": "true",
+          "label": "true",
+          "default": "true"
+        },
+        {
+          "value": "false",
+          "label": "false"
+        }
+      ],
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02_root_disk_size",
+      "type": "string",
+      "description": "Size of template disk volume. This size should be equal to the template disk size.",
+      "default": "100",
+      "hidden": false,
+      "label": "Root Disk Size - Workflow02",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02_root_disk_datastore",
+      "type": "string",
+      "description": "Name of the data storage cluster on the VM target disk.",
+      "hidden": false,
+      "label": "Template Disk Datastore - Workflow02",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02_root_disk_keep_on_remove",
+      "type": "string",
+      "description": "Deletes the template disk when the virtual machine is deleted.",
+      "default": "false",
+      "hidden": true,
+      "label": "Delete template disk on virtual machine deletion - Workflow02",
+      "secured": false,
+      "options": [
+        {
+          "value": "false",
+          "label": "False",
+          "default": "true"
+        },
+        {
+          "value": "true",
+          "label": "True"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "Workflow02_baw_os_user_name",
+      "type": "string",
+      "description": "The user identifier for the operating system that will be used to install the product. The identifier is created if it does not exist.",
+      "default": "workflowuser02",
+      "hidden": false,
+      "label": "Workflow Installation User Identifier - Workflow02",
+      "secured": false,
+      "required": true,
+      "regex": "^[a-z][-a-z0-9]*$",
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow02_baw_os_user_shell",
+      "type": "string",
+      "description": "Shell that the operating system user uses for product installation",
+      "default": "/bin/bash",
+      "hidden": true,
+      "label": "Shell for the operating system user",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow02_install_mode",
+      "type": "string",
+      "description": "The installation mode for IBM Business Automation Workflow",
+      "default": "nonAdmin",
+      "hidden": true,
+      "label": "IBM Business Automation Workflow Installation Mode",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "options": [
+        {
+          "value": "admin",
+          "label": "admin"
+        },
+        {
+          "value": "nonAdmin",
+          "label": "nonAdmin",
+          "default": "true"
+        }
+      ],
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow02_baw_os_user_ldap_user",
+      "type": "string",
+      "description": "A flag that indicates whether to create the WebSphere user locally or to use an LDAP-based user",
+      "default": "false",
+      "hidden": true,
+      "label": "WebSphere to use LDAP for authentication - Workflow02",
+      "secured": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "true"
+        },
+        {
+          "value": "false",
+          "label": "false",
+          "default": true
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow02_baw_os_user_comment",
+      "type": "string",
+      "description": "Comments that you can add when you create the user identifier",
+      "default": "Workflow administrator",
+      "hidden": true,
+      "label": "Workflow comment - Workflow02",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow02_baw_os_user_gid",
+      "type": "string",
+      "description": "The operating system group name that will be assigned to the product installation.",
+      "default": "workflowgroup",
+      "hidden": false,
+      "label": "Workflow User Group Name - Workflow02",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow01_product_version",
+      "type": "string",
+      "description": "The product version of IBM Business Automation Workflow.",
+      "default": "18.0.0.1",
+      "hidden": true,
+      "label": "Workflow product version",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "options": [
+        {
+          "value": "18.0.0.1",
+          "label": "18.0.0.1",
+          "default": "true"
+        }
+      ],
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow01_product_edition",
+      "type": "string",
+      "description": "The product edition of IBM Business Automation Workflow: Server, ESB, or Express",
+      "default": "Server",
+      "hidden": true,
+      "label": "Workflow product edition",
+      "secured": false,
+      "required": true,
+      "options": [
+        {
+          "value": "Server",
+          "label": "Server",
+          "default": "true"
+        },
+        {
+          "value": "Exp",
+          "label": "Exp"
+        },
+        {
+          "value": "ESB",
+          "label": "ESB"
+        }
+      ],
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow01_features",
+      "type": "string",
+      "description": "IBM Business Automation Workflow Enterprise license: IBM Business Automation Workflow Enterprise Production or IBM Business Automation Workflow Enterprise Non-production.",
+      "default": "WorkflowEnterprise.Production",
+      "hidden": false,
+      "label": "IBM Business Automation Workflow Enterprise license",
+      "secured": false,
+      "required": true,
+      "options": [
+        {
+          "value": "WorkflowEnterprise.Production",
+          "label": "IBM Business Automation Workflow Enterprise Production",
+          "default": "true"
+        },
+        {
+          "value": "WorkflowEnterprise.NonProduction",
+          "label": "IBM Business Automation Workflow Enterprise Non-Production"
+        }
+      ],
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow01_was_offering_id",
+      "type": "string",
+      "description": "The offering ID of WebSphere Application Server",
+      "default": "com.ibm.websphere.ND.v85",
+      "hidden": true,
+      "label": "WAS offering ID",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow01_was_profile_id",
+      "type": "string",
+      "description": "The profile identifier of WebSphere Application Server",
+      "default": "IBM WebSphere Application Server Network Deployment V8.5",
+      "hidden": true,
+      "label": "WebSphere Application Server profile ID",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow01_baw_offering_id",
+      "type": "string",
+      "description": "The offering ID of IBM Business Automation Workflow",
+      "default": "com.ibm.bpm.ADV.v85",
+      "hidden": true,
+      "label": "Workflow offering ID",
+      "secured": false,
+      "required": true,
+      "options": [
+        {
+          "value": "com.ibm.bpm.ADV.v85",
+          "label": "WorkflowEnterprise offering ID",
+          "default": "true"
+        },
+        {
+          "value": "com.ibm.bpm.EXP.v85",
+          "label": "WorkflowExpress offering ID"
+        },
+        {
+          "value": "com.ibm.bpm.ESB.v85",
+          "label": "EnterpriseServiceBus offering ID"
+        }
+      ],
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow01_ifix_names",
+      "type": "list",
+      "description": "The full names of interim fix installation packages; for example, 8.6.10018001-WS-BPM-IFJR59735.zip. The default packages are required.",
+      "hidden": false,
+      "default": [
+        "8.5.5.14-ws-was-ifph01810.zip"
+      ],
+      "label": "Interim Fix Packages",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow01_fixpack_names",
+      "type": "list",
+      "description": "The full name of the Business Automation Workflow, the WebSphere Application Server fix pack installation package, or both package names. Attention: Specify all parts of a product fix pack in the input field separated by a semi-colon(;). Specify each product fix packs in different input fields. For example, the Business Automation Workflow 18002 fix pack package has only one part. To install this package, specify the following information in the input field, and press Enter: workflow.18002.delta.repository.zip. The WebSphere Application Server 85514 fix pack package has three parts. To install this package too, specify the following information in a new input field, and press Enter:  8.5.5-WS-WAS-FP014-part1.zip; 8.5.5-WS-WAS-FP014-part2.zip; 8.5.5-WS-WAS-FP014-part3.zip",
+      "default": [
+        "workflow.18002.delta.repository.zip",
+        "8.5.5-WS-WAS-FP014-part1.zip; 8.5.5-WS-WAS-FP014-part2.zip; 8.5.5-WS-WAS-FP014-part3.zip"
+      ],
+      "hidden": false,
+      "label": "Fix Pack Packages",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "group_name": "installation"
+    },
+    {
+      "name": "Workflow01_cell_admin_username",
+      "type": "string",
+      "description": "The name of the cell administrator.",
+      "default": "celladmin",
+      "hidden": false,
+      "label": "Cell Administrator Name",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "configuration"
+    },
+    {
+      "name": "Workflow01_cell_admin_userpassword",
+      "type": "password",
+      "description": "The password of the cell administrator.",
+      "hidden": false,
+      "label": "Cell Administrator Password",
+      "secured": true,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "configuration"
+    },
+    {
+      "name": "Workflow01_de_admin_username",
+      "type": "string",
+      "description": "The user name of the development environment administrator.",
+      "default": "deadmin",
+      "hidden": false,
+      "label": "Development Environment Administrator Username",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "configuration"
+    },
+    {
+      "name": "Workflow01_de_admin_userpassword",
+      "type": "password",
+      "description": "The password of the development environment administrator.",
+      "hidden": false,
+      "label": "Development Environment Administrator Password",
+      "secured": true,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "configuration"
+    },
+    {
+      "name": "Workflow01_config_product_type",
+      "type": "string",
+      "description": "The product type for configuration: Advanced or AdvancedOnly.",
+      "hidden": false,
+      "label": "Configuration Product Type",
+      "secured": false,
+      "required": true,
+      "options": [
+        {
+          "value": "Advanced",
+          "label": "Advanced",
+          "default": "true"
+        },
+        {
+          "value": "AdvancedOnly",
+          "label": "AdvancedOnly"
+        }
+      ],
+      "immutable": false,
+      "immutable_after_create": true,
+      "default": "Advanced",
+      "group_name": "configuration"
+    },
+    {
+      "name": "Workflow01_config_deployment_type",
+      "type": "string",
+      "description": "The deployment type for configuration: Workflow Center (PC) or Workflow Server (PS).",
+      "hidden": false,
+      "label": "Configuration Deployment Type",
+      "secured": false,
+      "required": true,
+      "options": [
+        {
+          "value": "PC",
+          "label": "Workflow Center",
+          "default": "true"
+        },
+        {
+          "value": "PS",
+          "label": "Workflow Server"
+        }
+      ],
+      "immutable": false,
+      "immutable_after_create": true,
+      "default": "PC",
+      "group_name": "configuration"
+    },
+    {
+      "name": "Workflow01_config_cluster_type",
+      "type": "string",
+      "description": "The cluster type for the configuration: SingleClusters",
+      "hidden": true,
+      "label": "Configuration Cluster Type",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "default": "SingleClusters",
+      "group_name": "configuration"
+    },
+    {
+      "name": "case_network_shared_dir",
+      "type": "string",
+      "description": "The network shared directory, which is shared among multiple workflow servers in the deployment environment. Required for the Advanced product type, NFS only.",
+      "hidden": true,
+      "label": "Case Management Network Shared Directory",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "configuration"
+    },
+    {
+      "name": "Workflow01_ps_environment_purpose",
+      "type": "string",
+      "description": "The Workflow Server environment: Development, Test, Staging, or Production.",
+      "default": "Production",
+      "hidden": false,
+      "label": "Workflow Server Environment",
+      "secured": false,
+      "required": false,
+      "options": [
+        {
+          "value": "Production",
+          "label": "Production",
+          "default": "true"
+        },
+        {
+          "value": "Development",
+          "label": "Development"
+        },
+        {
+          "value": "Test",
+          "label": "Test"
+        },
+        {
+          "value": "Staging",
+          "label": "Staging"
+        }
+      ],
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "configuration"
+    },
+    {
+      "name": "Workflow01_ps_offline",
+      "type": "string",
+      "description": "Whether Workflow Server is offline.",
+      "default": "true",
+      "hidden": true,
+      "label": "Workflow Server offline",
+      "secured": false,
+      "required": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "true",
+          "default": "true"
+        },
+        {
+          "value": "false",
+          "label": "false"
+        }
+      ],
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "configuration"
+    },
+    {
+      "name": "Workflow01_ps_pc_transport_protocol",
+      "type": "string",
+      "description": "The transport protocol through which Workflow Server connects to Workflow Center.",
+      "default": "https",
+      "hidden": true,
+      "label": "Workflow Server to Workflow Center Transport Protocol",
+      "secured": false,
+      "required": false,
+      "options": [
+        {
+          "value": "https",
+          "label": "https",
+          "default": "true"
+        },
+        {
+          "value": "http",
+          "label": "http"
+        }
+      ],
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "configuration"
+    },
+    {
+      "name": "Workflow01_ps_pc_hostname",
+      "type": "string",
+      "description": "The Workflow Center hostname that Workflow Server connects to.",
+      "hidden": true,
+      "label": "Workflow Center Hostname for Workflow Server Connection",
+      "secured": false,
+      "required": false,
+      "regex": "^(?![0-9]+$)([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9])$|^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]).){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",  
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "configuration"
+    },
+    {
+      "name": "Workflow01_ps_pc_port",
+      "type": "string",
+      "description": "The Workflow Center port that Workflow Server connects to.",
+      "default": "9443",
+      "hidden": true,
+      "label": "Workflow Center Port for Workflow Server Connection",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "configuration"
+    },
+    {
+      "name": "Workflow01_ps_pc_contextroot_prefix",
+      "type": "string",
+      "description": "The Workflow Center context root prefix that Workflow Server connects to.",
+      "hidden": true,
+      "label": "Workflow Center Context Root Prefix for Workflow Server Connection",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "configuration"
+    },
+    {
+      "name": "Workflow01_ps_pc_alias_user",
+      "type": "string",
+      "description": "Specifies the Workflow Center alias user which Workflow Server connects to",
+      "default": "admin",
+      "hidden": true,
+      "label": "Workflow Center Alias User for Workflow Server Connection",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "configuration"
+    },
+    {
+      "name": "Workflow01_ps_pc_alias_password",
+      "type": "password",
+      "description": "Specifies the alias user password of Workflow Center that Workflow Server connects to",
+      "hidden": true,
+      "label": "Workflow Center Alias User Password for Workflow Server Connection",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "configuration"
+    },
+    {
+      "name": "Database_type",
+      "type": "string",
+      "description": "The database type for configuration, Db2 or Oracle",
+      "default": "Db2",
+      "hidden": false,
+      "label": "Database Type for Configuration",
+      "secured": false,
+      "required": true,
+      "options": [
+        {
+          "value": "DB2",
+          "label": "Db2",
+          "default": "true"
+        },
+        {
+          "value": "Oracle",
+          "label": "Oracle"
+        }
+      ],
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "configuration"
+    },
+    {
+      "name": "Database_db2_hostname",
+      "type": "string",
+      "description": "The hostname of the Db2 instance.",
+      "hidden": false,
+      "label": "Db2 Instance Hostname",
+      "secured": false,
+      "required": false,
+      "regex": "^(?![0-9.]+$)([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-_.]{0,61}[a-zA-Z0-9])$|^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_db2_port",
+      "type": "string",
+      "description": "The port number of the Db2 instance.",
+      "default": "50000",
+      "hidden": false,
+      "label": "Db2 Instance Port",
+      "secured": false,
+      "required": false,
+      "regex": "^([1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]{1}|6553[0-5])$",
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_db2_instance_username",
+      "type": "string",
+      "description": "The user name of the Db2 instance.",
+      "default": "db2inst1",
+      "hidden": false,
+      "label": "Db2 Instance Username",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_db2_instance_userpassword",
+      "type": "password",
+      "description": "The password for the Db2 instance.",
+      "hidden": false,
+      "label": "Db2 Instance Password",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Workflow01_db2_install",
+      "type": "string",
+      "description": "Installs the Db2 database system.",
+      "hidden": true,
+      "label": "Local Db2 Installation",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "default": "false",
+      "options": [
+        {
+          "value": "true",
+          "label": "true",
+          "default": "true"
+        },
+        {
+          "value": "false",
+          "label": "false"
+        }
+      ],
+      "group_name": "db2"
+    },
+    {
+      "name": "Workflow01_db2_fenced_newuser",
+      "type": "string",
+      "description": "Creates a fenced user",
+      "hidden": true,
+      "label": "Create New Db2 Fenced User",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "default": "true",
+      "options": [
+        {
+          "value": "true",
+          "label": "true",
+          "default": "true"
+        },
+        {
+          "value": "false",
+          "label": "false"
+        }
+      ],
+      "group_name": "db2"
+    },
+    {
+      "name": "Workflow01_db2_fenced_username",
+      "type": "string",
+      "description": "The fenced user name of the Db2 instance.",
+      "default": "db2fenc1",
+      "hidden": true,
+      "label": "Db2 Fenced Username",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Workflow01_db2_fenced_userpassword",
+      "type": "password",
+      "description": "The fenced user password for the Db2 instance.",
+      "hidden": true,
+      "label": "Db2 Fenced Password",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Workflow01_db2_das_newuser",
+      "type": "string",
+      "description": "Creates a user of the administration server",
+      "hidden": true,
+      "label": "Create Db2 Administration Server User",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "default": "true",
+      "options": [
+        {
+          "value": "true",
+          "label": "true",
+          "default": "true"
+        },
+        {
+          "value": "false",
+          "label": "false"
+        }
+      ],
+      "group_name": "db2"
+    },
+    {
+      "name": "Workflow01_db2_das_username",
+      "type": "string",
+      "description": "The user name to access the administration server of the Db2 instance.",
+      "default": "db2das1",
+      "hidden": true,
+      "label": "Db2 Administration Server Username",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Workflow01_db2_das_userpassword",
+      "type": "password",
+      "description": "The password for the administration server of the Db2 instance.",
+      "hidden": true,
+      "label": "Db2 Administration Password",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_db2_common_database",
+      "type": "string",
+      "description": "The name of the Common database.",
+      "default": "CMNDB",
+      "hidden": false,
+      "label": "Common Database Name",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_db2_process_database",
+      "type": "string",
+      "description": "The name of the Process database.",
+      "default": "BPMDB",
+      "hidden": false,
+      "label": "Process Database Name",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_db2_perf_database",
+      "type": "string",
+      "description": "The name of the Performance Data Warehouse database.",
+      "default": "PDWDB",
+      "hidden": false,
+      "label": "Performance Data Warehouse Database Name",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_db2_cpe_database",
+      "type": "string",
+      "description": "The name of the Content database.",
+      "default": "CPEDB",
+      "hidden": false,
+      "label": "Content Database Name",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_cpe_icndb_schema",
+      "type": "string",
+      "description": "The schema for IBM Content Navigator (ICNDb).",
+      "default": "ICNSA",
+      "hidden": false,
+      "label": "Content Database - IBM Content Navigator Schema",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_cpe_icndb_tablespace",
+      "type": "string",
+      "description": "The table space for IBM Content Navigator (ICNDb).",
+      "default": "WFICNTS",
+      "hidden": false,
+      "label": "Content Database - IBM Content Navigator Table Space",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_cpe_dosdb_schema",
+      "type": "string",
+      "description": "The schema for the design object store (DosDb).",
+      "default": "DOSSA",
+      "hidden": false,
+      "label": "Content Database - Design Object Store Schema",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_cpe_dosdb_tsdosdata",
+      "type": "string",
+      "description": "The data table space for the design object store (DosDb).",
+      "default": "DOSSA_DATA_TS",
+      "hidden": false,
+      "label": "Content Database - Design Object Store Data Table Space",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_cpe_dosdb_tsdoslob",
+      "type": "string",
+      "description": "The large object table space for the design object store (DosDb).",
+      "default": "DOSSA_LOB_TS",
+      "hidden": false,
+      "label": "Content Database - Design Object Store Large Object Table Space",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_cpe_dosdb_tsdosidx",
+      "type": "string",
+      "description": "The index table space for the design object store (DosDb).",
+      "default": "DOSSA_IDX_TS",
+      "hidden": false,
+      "label": "Content Database - Design Object Store Index Table Space",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_cpe_tosdb_schema",
+      "type": "string",
+      "description": "The schema for the target object store (TosDb).",
+      "default": "TOSSA",
+      "hidden": false,
+      "label": "Content Database - Target Object Store Schema",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_cpe_tosdb_tstosdata",
+      "type": "string",
+      "description": "The data table space for the target object store (TosDb).",
+      "default": "TOSSA_DATA_TS",
+      "hidden": false,
+      "label": "Content Database - Target Object Store Data Table Space",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_cpe_tosdb_tstoslob",
+      "type": "string",
+      "description": "The large object table space for the target object store (TosDb).",
+      "default": "TOSSA_LOB_TS",
+      "hidden": false,
+      "label": "Content Database - Target Object Store Large Object Table Space",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Database_cpe_tosdb_tstosidx",
+      "type": "string",
+      "description": "The index table space for the target object store (TosDb).",
+      "default": "TOSSA_IDX_TS",
+      "hidden": false,
+      "label": "Content Database - Target Object Store Index Table Space",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "db2"
+    },
+    {
+      "name": "Oracle_jdbc_driver",
+      "type": "string",
+      "description": "The name of the Oracle JDBC driver. The supported drivers are ojdbc6.jar, ojdbc7.jar and ojdbc8.jar.",
+      "hidden": false,
+      "label": "Oracle JDBC Driver",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_hostname",
+      "type": "string",
+      "description": "The hostname of the Oracle database.",
+      "hidden": false,
+      "label": "Oracle Database Hostname",
+      "secured": false,
+      "required": false,
+      "regex": "^(?![0-9.]+$)([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-_.]{0,61}[a-zA-Z0-9])$|^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_port",
+      "type": "string",
+      "description": "The port number of the Oracle database.",
+      "default": "1521",
+      "hidden": false,
+      "label": "Oracle Database Port",
+      "secured": false,
+      "required": false,
+      "regex": "^([1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]{1}|6553[0-5])$",
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_database_name",
+      "type": "string",
+      "description": "The name of the Oracle database.",
+      "hidden": false,
+      "label": "Oracle Database Name",
+      "default": "orcl",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_shareddb_username",
+      "type": "string",
+      "description": "The user name of the SharedDb schema.",
+      "default": "cmnuser",
+      "hidden": false,
+      "label": "SharedDb Schema User Name",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_shareddb_userpassword",
+      "type": "password",
+      "description": "The user password for the SharedDb schema.",
+      "hidden": false,
+      "label": "SharedDb Schema User Password",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_cellonlydb_username",
+      "type": "string",
+      "description": "The user name of the CellOnlyDb schema.",
+      "default": "celluser",
+      "hidden": false,
+      "label": "CellOnlyDb Schema User Name",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_cellonlydb_userpassword",
+      "type": "password",
+      "description": "The user password for the CellOnlyDb schema.",
+      "hidden": false,
+      "label": "CellOnlyDb Schema User Password",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_psdb_username",
+      "type": "string",
+      "description": "The user name of the ProcessServerDb schema.",
+      "default": "psuser",
+      "hidden": false,
+      "label": "ProcessServerDb Schema User Name",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_psdb_userpassword",
+      "type": "password",
+      "description": "The user password for the ProcessServerDb schema.",
+      "hidden": false,
+      "label": "ProcessServerDb Schema User Password",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_icndb_username",
+      "type": "string",
+      "description": "The user name of the IBM Content Navigator (ICNDb) schema.",
+      "default": "icnuser",
+      "hidden": false,
+      "label": "ICNDb Schema User Name",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_icndb_userpassword",
+      "type": "password",
+      "description": "The user password for the IBM Content Navigator (ICNDb) schema.",
+      "hidden": false,
+      "label": "ICNDb Schema User Password",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_icndb_tablespace",
+      "type": "string",
+      "description": "The table space for IBM Content Navigator (ICNDb) schema .",
+      "default": "WFICNTS",
+      "hidden": false,
+      "label": "ICNDb Schema Table Space",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_dosdb_username",
+      "type": "string",
+      "description": "The user name of the design object store (DosDb) schema.",
+      "default": "dosuser",
+      "hidden": false,
+      "label": "DosDb Schema User Name",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_dosdb_userpassword",
+      "type": "password",
+      "description": "The user password for the design object store (DosDb) schema.",
+      "hidden": false,
+      "label": "DosDb Schema User Password",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_dosdb_tsdosdata",
+      "type": "string",
+      "description": "The data table space for the design object store (DosDb) schema.",
+      "default": "DOSSA_DATA_TS",
+      "hidden": false,
+      "label": "DosDb Data Table Space",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_tosdb_username",
+      "type": "string",
+      "description": "The user name of the target object stare (TosDb) schema.",
+      "default": "tosuser",
+      "hidden": false,
+      "label": "TosDb Schema User Name",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_tosdb_userpassword",
+      "type": "password",
+      "description": "The user password for the target object stare (TosDb) schema.",
+      "hidden": false,
+      "label": "TosDb User Password",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_tosdb_tstosdata",
+      "type": "string",
+      "description": "The data table space for the target object stare (TosDb) schema.",
+      "default": "TOSSA_DATA_TS",
+      "hidden": false,
+      "label": "TosDb Data Table Space",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_pdwdb_username",
+      "type": "string",
+      "description": "The user name of the PerformanceDb schema.",
+      "default": "pdwuser",
+      "hidden": false,
+      "label": "PerformanceDb Schema User Name",
+      "secured": false,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "Database_oracle_pdwdb_userpassword",
+      "type": "password",
+      "description": "The user password for the PerformanceDb schema.",
+      "hidden": false,
+      "label": "PerformanceDb Schema User Password",
+      "secured": true,
+      "required": false,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "oracle"
+    },
+    {
+      "name": "metering_url",
+      "type": "string",
+      "description": "The URL of the IBM Cloud Private Metering Service. Attention: To use the metering service, you need WebSphere Application Server 8.5.5.14, or later. For WAS 8.5.5.14, you also need the Interim Fix package (8.5.5.14-ws-was-ifph01810.zip).",
+      "hidden": false,
+      "label": "IBM Cloud Private Metering Service URL",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "metering"
+    },
+    {
+      "name": "metering_apikey",
+      "type": "string",
+      "description": "The API key for the IBM Cloud Private Metering Service. Attention: To use the metering service, you need WebSphere Application Server 8.5.5.14, or later. For WAS 8.5.5.14, you also need the Interim Fix package (8.5.5.14-ws-was-ifph01810.zip).",
+      "hidden": false,
+      "label": "IBM Cloud Private Metering Service API Key",
+      "secured": true,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "metering"
+    }
+  ],
+  "template_output_params": [
+    {
+      "name": "IHS01_ip",
+      "label": "IBM HTTP Server IP Address",
+      "description": "The Public IP address",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "IHS01_name",
+      "label": "IBM HTTP Server Host Name",
+      "description": "The chef node name",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "IHS01_installpath",
+      "label": "IBM HTTP Server installation path",
+      "description": "The installation path of IBM HTTP Server",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow01_ip",
+      "label": "Workflow Node01 IP Address",
+      "description": "The Public IP address",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow01_name",
+      "label": "Workflow Node01 Host Name",
+      "description": "The chef node name",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow01_installpath",
+      "label": "Workflow Node01 installation path",
+      "description": "The installation path of Workflow Node01",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow02_ip",
+      "label": "Workflow Node02 IP Address",
+      "description": "The Public IP address",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow02_name",
+      "label": "Workflow Node02 Host Name",
+      "description": "The chef node name",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow02_installpath",
+      "label": "Workflow Node02 installation path",
+      "description": "The installation path of Workflow Node02",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow01_pac_dns",
+      "label": "Process Admin DNS URL",
+      "description": "The DNS URL of the Process Admin Console",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow01_pac_ip",
+      "label": "Process Admin IP URL",
+      "description": "The IP URL of the Process Admin Console",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow01_pc_dns",
+      "label": "Workflow Center DNS URL",
+      "description": "The DNS URL of the Workflow Center",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow01_pc_ip",
+      "label": "Workflow Center IP URL",
+      "description": "The IP URL of the Workflow Center",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow01_admin_console_dns",
+      "label": "IBM Business Automation Workflow Admin Console DNS URL",
+      "description": "The DNS URL of the IBM Business Automation Workflow admin console",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow01_admin_console_ip",
+      "label": "IBM Business Automation Workflow Admin Console IP URL",
+      "description": "The IP URL of the IBM Business Automation Workflow admin console",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow01_bpc_dns",
+      "label": "Business Process Choreographer Explorer DNS URL",
+      "description": "The DNS URL of the Business Process Choreographer Explorer",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow01_bpc_ip",
+      "label": "Business Process Choreographer Explorer IP URL",
+      "description": "The IP URL of the Business Process Choreographer Explorer",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow01_pp_dns",
+      "label": "Process Portal DNS URL",
+      "description": "The DNS URL of the Process Portal",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "Workflow01_pp_ip",
+      "label": "Process Portal IP URL",
+      "description": "The IP URL of the Process Portal",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "stack_id",
+      "label": "Generated Stack ID",
+      "description": "The identifier of the generated stack",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    }
+  ]
+}

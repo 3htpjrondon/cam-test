@@ -1,0 +1,59 @@
+{
+    "name": "ELK Agent Installation Template",
+    "description": "This integration template installs the Filebeat agent on a deployed VM and registers it with the IBM Cloud Private ELK stack.",
+    "version": "2.1",
+    "imageUrl": "",
+    "image": "",
+    "type": "integration",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "Other",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "other/terraform",
+        "templateFileName": "icp_elk_integration.tf"
+      }
+    },
+    "metadata": {
+      "providerDisplayName": "Other",
+      "longDescription": "This integration template installs Filebeat on a deployed VM and registers it with the IBM Cloud Private ELK stack. The filebeat agent installer(filebeat-6.2.2-amd64.deb  filebeat-6.2.2-x86_64.rpm) must be available in the evironment and accessible via a URI (http/s, ftp, file). It is assumed that an ELK endpoint has been installed and accessible from the target VM.",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " Other<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "<ul><li>Ubuntu 16</li><li>Ubuntu 14</li><li>Redhat 6.x</li><li>Redhat 7.x</li></ul>"},
+{
+    "title": "Topology",
+    "description": "Filebeat Agent installed and configured.<br>"},
+{
+    "title": "Software Deployed",
+    "description": "Filebeat Agent.<br>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": "Minimal 100mb in /tmp.<br>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "<ol class=\"list-numbering\"><li>The IBM Cloud Private ELK does not support receiving logs from external sources by default. See the documentation for how to enable this.<li><ol>"}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    },
+    "toolchain": {
+      "git": "https://github.com/ibmcam/cam-toolchain"
+    }
+}

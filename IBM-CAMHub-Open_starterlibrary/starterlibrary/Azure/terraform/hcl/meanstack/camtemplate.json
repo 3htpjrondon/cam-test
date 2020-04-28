@@ -1,0 +1,52 @@
+{
+   "name": "MEAN stack deployment on Microsoft Azure",
+   "description": "MEAN - A simple and scalable starting point for full stack JavaScript web development.",
+   "version": "1.0",
+   "type": "prebuilt",
+   "manifest": {
+     "template_type": "Terraform",
+     "template_format": "HCL",
+     "template_provider": "Microsoft Azure",
+     "template": {
+       "templateData": "",
+       "templateVariables": "",
+       "templateOutput": ""
+     },
+     "template_source": {
+       "githubRepoUrl": "",
+       "githubAccessToken": "",
+       "relativePathToTemplateFolder": "Azure/terraform/hcl/meanstack",
+       "templateFileName": "meanstack-two-tiers.tf"
+     }
+   },
+   "metadata": {
+     "displayName": "MEAN stack deployment on Microsoft Azure",
+     "longDescription": "Deploys a MEAN stack (Mongo, Express, Angular, Node) in Microsoft Azure providing a complete development environment. This deployment also deploys a simple sample application to validate the stack is operational.",
+     "bullets": [
+       {
+         "title": "Clouds",
+         "description": "Microsoft Azure"
+       },
+       {
+         "title": "Operating systems supported",
+         "description": "Microsoft Azure: Ubuntu 16.04"
+       },
+       {
+         "title": "Topology",
+         "description": "Microsoft Azure: 2 virtual machines: <ul class=\"unordered-list-style\"><li>Node.js, Angular.js, Express.js;</li><li>MongoDB</li></ul>"
+       },
+       {
+         "title": "Software deployed",
+         "description": "<ol class=\"list-numbering\"><li>MongoDB: a NoSQL database</li><li>Express.js: a web application framework that runs on Node.js</li><li>Angular.js: a JavaScript MVC framework that runs in browser JavaScript engines</li><li>Node.js: an execution environment for event-driven server-side and networking applications</li></ol>"
+       },
+       {
+         "title": "Default virtual machine settings",
+         "description": "<ul><li>Microsoft Azure:<ul style=\"margin-left: 20px;\"><li>Flavor:<ul style=\"margin-left: 20px;\"><li>MongoDB: Standard_A1<ul style=\"margin-left: 20px;\"><li>Cores - 1</li><li>Memory - 1.75GB</li><li>Storage - 40GB</li></ul></li><li>Front end: Standard_A2<ul style=\"margin-left: 20px;\"><li>Cores - 2</li><li>Memory - 3.5GB</li><li>Storage - 60GB</li></ul></li></ul></li><li>Network:<ul style=\"margin-left: 20px;\"><li>MongoDB:<ul style=\"margin-left: 20px;\"><li>Private IP - In 10.0.1.0/24</li><li>Public IP - Computed</li></ul></li><li>Front end:<ul style=\"margin-left: 20px;\"><li>Private IP - In 10.0.2.0/24</li><li>Public IP - Computed</li></ul></li></ul></li><li>Firewall:<ul style=\"margin-left: 20px;\"><li>MongoDB:<ul style=\"margin-left: 20px;\"><li>Ingress - Allows SSH from all sources, and TCP 27017 only from 10.0.2.0/24</li><li>Egress - All</li></ul></li><li>Front end:<ul style=\"margin-left: 20px;\"><li>Ingress - Allows SSH, and TCP 8443 from all sources</li><li>Egress - All</li></ul></li></ul></li></ul></li></ul>"
+       },
+       {
+         "title": "Usage and special notes",
+         "description": "<ol class=\"list-numbering\"><li>Downloads latest releases of software.</li><li>To access the application and virtual machines, please see the instructions in the output log.</li><li>The sample application in this deployment is from the open source project <a href=\"https://github.com/meanjs/mean\">https://github.com/meanjs/mean</a> and more details can be found in <a href=\"http://mean.io/\">http://mean.io/</a>.</li></ol>"
+       }
+     ]
+   }
+ }
